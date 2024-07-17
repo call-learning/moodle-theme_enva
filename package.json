@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "scss compiler",
   "main": "index.js",
-  "scripts": {
-    "compile:sass": "node-sass --source-map true scss/default.scss styles/dev.css",
-    "watch:sass": "nodemon -e scss -x \"npm run compile:sass\"",
-    "livereload": "livereload -d .",
-    "watch:mustache": "nodemon -e mustache -x \"/opt/homebrew/bin/php ../../admin/cli/purge_caches.php\"",
-    "start": "npm-run-all --parallel watch:sass watch:mustache livereload"
-  },
+"scripts": {
+  "compile:sass": "node-sass --source-map true scss/default.scss styles/dev.css",
+  "replace:placeholders": "node replacePlaceholders.js",
+  "build:css": "npm run compile:sass && npm run replace:placeholders",
+  "watch:sass": "nodemon -e scss -x \"npm run build:css\"",
+  "livereload": "livereload -d .",
+  "watch:mustache": "nodemon -e mustache -x \"/opt/homebrew/bin/php ../../admin/cli/purge_caches.php\"",
+  "start": "npm-run-all --parallel watch:sass watch:mustache livereload"
+},
   "author": "",
   "license": "ISC",
   "devDependencies": {

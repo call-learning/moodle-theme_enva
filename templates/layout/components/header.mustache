@@ -1,0 +1,98 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_enva/layout/components/header
+
+    TODO describe template header
+
+    Example context (json):
+    {
+    }
+}}
+<div class="enva-socials">
+    <div class="enva-maxwidth d-flex">
+        <div class="d-flex align-items-center bookmark">
+            <a class="btn btn-icon d-flex justify-content-center align-items-center icon-no-margin" href="{{{output.root_url}}}">
+                <i class="fa icon fa-bookmark"></i>
+            </a>
+            <a href="{{{output.root_url}}}">{{#str}}bookmark, theme_enva{{/str}}</a>
+        </div>
+        <div class="d-flex align-items-center email mr-auto">
+            <a class="btn btn-icon d-flex justify-content-center align-items-center icon-no-margin" href="mailto:{{#str}}email, theme_enva{{/str}}">
+                <i class="fa fa-envelope"></i>
+            </a>
+            <a href="mailto:{{#str}}email, theme_enva{{/str}}">{{#str}}email, theme_enva{{/str}}</a>
+        </div>
+        <div class="d-flex align-items-center socials">
+            <a class="btn btn-icon d-flex justify-content-center align-items-center icon-no-margin" href="https://www.facebook.com/EnvAlfort" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="enva-header enva-maxwidth no-gutters">
+    <div class="col-6 d-flex">
+        <div class="d-flex align-items-center pr-2 my-2">
+            <img class="francelogo img-responsive" src="{{{output.root_url}}}/theme/enva/pix/Republique_Francaise.jpg" alt="Republique Francaise" />
+        </div>
+        <div class="d-flex align-items-center my-2">
+            <a href="{{{output.root_url}}}">
+                <img class="envalogo img-responsive" src="{{{output.root_url}}}/theme/enva/pix/2023_ENVA_Paris_SF.png" alt="{{{sitename}}}" />
+            </a>
+        </div>
+    </div>
+    {{#output.show_login}}
+    <div class="col-6 d-flex align-items-center justify-content-end">
+        <div class="enva-header__login">
+            <form class="mform" action="{{{output.root_url}}}/login/index.php" method="post">
+                <div class="form-row align-items-center">
+                    <div class="d-flex align-items-stretch">
+                        <div class="login-icon d-flex align-items-center">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <input class="form-control" autocomplete="new-username" type="text" name="username" placeholder="{{#str}}username{{/str}}" />
+                    </div>
+                    <div class="d-flex align-items-stretch ml-2">
+                        <div class="login-icon d-flex align-items-center">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                        <input class="form-control" autocomplete="new-password" type="password" name="password" placeholder="{{#str}}password{{/str}}" />
+                    </div>
+                    <input type="hidden" name="logintoken" value="{{{output.login_token}}}">
+                    <div class="d-flex align-items-stretch ml-1">
+                        <button class="btn btn-icon" type="submit">
+                            <i class="fa fa-sign-in"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="enva-header__login__links">
+                <a href="{{{output.root_url}}}/login/forgot_password.php">{{#str}}forgotten{{/str}}</a>
+            </div>
+        </div>
+    </div>
+    {{/output.show_login}}
+    {{^output.show_login}}
+        <div class="col-6 d-flex align-items-center justify-content-end">
+            <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
+                {{#usermenu}}
+                    {{> core/user_menu }}
+                {{/usermenu}}
+            </div>
+        </div>
+    {{/output.show_login}}
+</div>

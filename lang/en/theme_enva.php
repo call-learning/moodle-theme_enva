@@ -34,3 +34,23 @@ $string['loginbackground'] = 'Login background image';
 $string['loginbackgrounddesc'] = 'Login background image to show on login background';
 $string['scss'] = 'Extra scss';
 $string['scssdesc'] = 'Extra scss compiled into the theme';
+
+// Frontpage
+$string['bookmark'] = 'https://www.vet-alfort.fr';
+$string['email']  = 'webmaster@vet-alfort.fr';
+$string['editcarousel'] = 'Edit carousel';
+$string['carouselconfig'] = 'Carousel configuration';
+$string['enva:editcarousel'] = 'Edit the carousel';
+$string['carouselenabled'] = 'Carousel enabled';
+$string['carouseltitle'] = 'Carousel title {$a}';
+$string['carouselimage'] = 'Carousel image {$a}';
+$string['carouseltext'] = 'Carousel text {$a}';
+$string['carousellink'] = 'Carousel link {$a}';
+$string['carouselslide'] = 'Carousel slide {$a}';
+$string['carouselslideactive'] = 'Enabled';
+$string['carouselslideactivedesc'] = 'Enable this slide';
+$string['remove'] = 'Remove';
+$string['numberofslides'] = 'Number of slides';
+$string['footertext'] = 'L\'EnvA est un établissement d\'enseignement supérieur et de recherche sous tutelle du Ministère chargé' .
+' de l\'Agriculture, et membre de la Communauté d\'Universités et d\'Etablissements "Université Paris-Est".<br><br>' .
+' 7 avenue du Général de Gaulle, 94700 Maisons Alfort';

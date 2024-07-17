@@ -68,7 +68,7 @@ $THEME->layouts = [
     ],
     // The site home page.
     'frontpage' => [
-        'file' => 'drawers.php',
+        'file' => 'frontpage.php',
         'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
         'options' => ['nonavbar' => true],

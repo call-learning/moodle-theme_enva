@@ -1,0 +1,273 @@
+// Override the max-width of the main content area
+@include media-breakpoint-up(md) {
+    .pagelayout-standard,
+    body,
+    body.limitedwidth {
+        #page.drawers {
+            .main-inner {
+                max-width: 90%;
+            }
+            .footer-popover {
+                max-width: $course-content-maxwidth;
+                //width: 100%;
+                margin: 0 auto;
+                @include border-radius();
+            }
+        }
+    }
+}
+
+// The primary navigation which uses custom styles, custom JavaScript and custom templates
+.primary-navigation {
+    .dropdown-toggle.dropdown-item {
+        display: flex;
+        align-items: center;
+        margin-right: 0.7rem;
+        &::after {
+            margin-top: 0.5rem;
+            margin-left: auto;
+            content: "\f141";
+        }
+    }
+    .dropdown-menu {
+        border-radius: 0;
+        background-color: rgb(244, 244, 244);
+        box-shadow: 0 0 40px #1d3a531a;
+        width: 250px;
+
+        .dropdown-item {
+            white-space: wrap;
+            display: flex;
+            align-items: start;
+        }
+    }
+    .dropdown-menu .dropdown-menu {
+        left: 95%;
+    }
+    .navigation .nav-link {
+        color: $white;
+        &.active {
+            color: $envadark;
+        }
+    }
+    .nav-link.active {
+        border-bottom-color: $envadark;
+    }
+    .moremenu {
+        height: 45px;
+        .nav-link {
+            height: 45px;
+            &:hover,
+            &:focus {
+                background-color: $envadark;
+            }
+            &.active {
+                color: $white;
+                &:focus,
+                &:hover {
+                    border-bottom-color: $envadark;
+                }
+            }
+        }
+    }
+}
+
+#page.drawers {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    margin-top: 0;
+    padding: 0;
+    &.show-drawer-left {
+        padding-left: 0;
+    }
+    &.show-drawer-right {
+        padding-right: 0;
+    }
+}
+
+.drawer-toggles {
+    position: sticky;
+    top: 45px;
+    padding-top: 5px;
+    .drawer-toggler {
+        top: 0;
+        position: relative;
+    }
+}
+
+
+@include media-breakpoint-up(lg) {
+    .drawers-container {
+        position: sticky;
+        top: $navbar-height;
+        height: 1px;
+        z-index: 1020;
+        // This makes sure the is no horizontal scrollbar.
+        transition: margin-right 200ms ease;
+        margin-right: 325px;
+        &.drawer-open {
+            margin-right: 0;
+        }
+    }
+    .toggle-container {
+        position: sticky;
+        top: calc(#{$navbar-height} + 1px);
+        height: 1px;
+        z-index: 1019;
+    }
+    .drawer.drawer-left,
+    .drawer.drawer-right {
+        position: absolute;
+        top: 0;
+    }
+}
+
+.drawer-toggler {
+    position: absolute;
+    .btn {
+        border-radius: 200px;
+        padding: 16px;
+        background-color: $gray-300;
+        box-shadow: $box-shadow-sm;
+        .icon {
+            width: auto;
+            height: auto;
+        }
+        &:focus {
+            box-shadow: $input-btn-focus-box-shadow;
+        }
+        transition: padding 200ms;
+    }
+}
+
+.drawer-left-toggle {
+    left: 0;
+    margin-top: 0.5rem;
+    .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        &:hover {
+            padding: 16px;
+        }
+    }
+}
+
+.drawer-right-toggle {
+    right: 0;
+    margin-top: 0.5rem;
+    .btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        padding: 16px;
+        &:hover {
+            padding: 16px;
+        }
+    }
+}
+
+.drawer-primary {
+    div.list-group-item {
+        background-color: rgba(0, 0, 0, 0.025);
+        a.list-group-item {
+            background-color: transparent;
+        }
+    }
+}
+
+.secondary-navigation .navigation .nav-tabs {
+    max-width: 100%;
+}
+
+.path-admin,
+.format-site {
+    .header-maxwidth {
+        max-width: 100%;
+    }
+}
+
+.header-maxwidth,
+.secondary-navigation {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.secondary-navigation .navigation {
+    padding: 0;
+    margin: 0;
+}
+
+#page-wrapper #page #page-content {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.pagelayout-standard #page.drawers .footer-popover,
+body.limitedwidth #page.drawers .footer-popover {
+    max-width: 100%;
+}
+
+.pagelayout-login #page-footer {
+    display: none;
+}
+
+#page-wrapper .footer-content-debugging {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.btn-outline-secondary {
+    @include button-outline-variant($gray-600);
+    border-color: $gray-600;
+}
+
+.btn-outline-info {
+    @include button-outline-variant($info-outline);
+}
+
+.btn-outline-warning {
+    @include button-outline-variant($warning-outline);
+}
+
+.secondary-navigation .moremenu {
+    opacity: 0;
+    height: $moremenu-height;
+    &.observed {
+        opacity: 1;
+    }
+    .nav-link {
+        height: $moremenu-height;
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        border-right: none;
+        border-bottom: solid 3px transparent;
+        border-left: none;
+        border-top: none;
+        border-radius: 0.5rem !important;
+        margin-right: 0.25rem;
+        &:hover,
+        &:focus {
+            background-color: darken($courseindex-item-page-bg, 5%);
+        }
+
+        &.active {
+            color: $courseindex-link-color-selected;
+            font-weight: bold;
+            background-color: $courseindex-item-page-bg;
+
+            border-color: transparent;
+            border-bottom-color: transparent;
+            &:focus,
+            &:hover {
+                background-color: darken($courseindex-item-page-bg, 5%);
+                border-bottom-color: transparent
+            }
+        }
+    }
+}
+.secondary-navigation .navigation {
+    border-bottom: 0;
+}
+@include bg-variant(".bg-gray", $gray-200, true);

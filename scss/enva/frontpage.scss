@@ -1,3 +1,203 @@
-.blackbox {
-    color: $black;
+// The widgets rendered on the front page (using some simple HTML)
+.frontpage-widgets {
+    display: flex;
+    flex-direction: column;
+    .camera_wrap {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+// The iconboxes widget
+.iconboxes {
+    & > .iconbox {
+        padding: 0.5rem;
+        color: #FFF;
+        display: flex;
+        .inner {
+            padding: 2rem;
+            flex: 1 0;
+            &:hover {
+                background-color: #4a4a4a !important;
+            }
+        }
+    }
+    & > .iconbox:nth-child(8n+1) .inner {
+        background-color: #41225f;
+    }
+    & > .iconbox:nth-child(8n+2) .inner {
+        background-color: #785991;
+    }
+    & > .iconbox:nth-child(8n+3) .inner {
+        background-color: #e08cb2
+    }
+    & > .iconbox:nth-child(8n+4) .inner {
+        background-color: #bc3d7d;
+    }
+    // Repeat the pattern in reverse.
+    & > .iconbox:nth-child(8n+5) .inner {
+        background-color: #bc3d7d;
+    }
+    & > .iconbox:nth-child(8n+6) .inner {
+        background-color: #e08cb2
+    }
+    & > .iconbox:nth-child(8n+7) .inner {
+        background-color: #785991;
+    }
+    & > .iconbox:nth-child(8n+8) .inner {
+        background-color: #41225f;
+    }
+    .iconbox {
+        position: relative;
+        .iconbox-content {
+            text-align: center;
+            word-wrap: break-word;
+            margin-top: 1rem;
+            .btn-primary {
+                display: none;
+            }
+            a::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                pointer-events: auto;
+                content: "";
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+        .iconcircle {
+            text-align: center;
+            .fa,
+            .far,
+            .fas {
+                color: #fff;
+                font-size: 42px;
+                transition: all 0.7s;
+                display: contents;
+            }
+        }
+    }
+}
+
+.pagelayout-frontpage {
+
+    // Remove most of the padding and borders to make sure
+    // the frontpage looks clean.
+    .course-section .section-item {
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+    }
+    #page.drawers .main-inner {
+        padding-top: 0;
+        margin-top: 0;
+    }
+    .course-section {
+        h1,
+        h2 {
+            margin-top: 2rem;
+            margin-left: 0.5rem;
+        }
+        .activity,
+        .activity-item,
+        .activity-altcontent {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    // The frontpage available courses are not used normally,
+    // but we can style them anyway.
+    #frontpage-available-course-list {
+        h2 {
+            margin-left: 0.5rem;
+        }
+        .coursebox {
+            border-radius: 0;
+            margin: 0.5rem;
+        }
+    }
+
+    // Frontpage blocks are rendered in a grid
+    .frontpageblocks {
+        margin-top: 3rem;
+        aside {
+            display: flex;
+            flex-wrap: wrap;
+            section.block {
+                flex: 0 0 100%;
+                max-width: 100%;
+                border-radius: 0;
+            }
+        }
+        @include media-breakpoint-up(md) {
+            aside {
+                section.block {
+                    flex: 0 0 calc(33.3333% - 1rem);
+                    max-width: calc(33.3333% - 1rem);
+                    margin: 0.5rem !important;
+                }
+            }
+        }
+        .add_block_button {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+            .btn {
+                flex: 0 1 auto;
+                width: auto;
+            }
+        }
+    }
+
+    // The blockboxes are just some inject HTML into a text-label.
+    .blockboxes {
+        display: flex;
+        flex-wrap: wrap;
+        & > .blockbox {
+            position: relative;
+            padding: 0.5rem;
+            display: flex;
+        }
+        .blocknumber_box {
+            padding: 2rem;
+            display: flex;
+            color: #FFF;
+            background-color: #421664;
+            flex: 1 0 100%;
+            .blocknumber_content {
+                margin-top: 1   rem;
+            }
+            .blocknumber_icon {
+                font-size: 3rem;
+                margin-right: 1rem;
+            }
+            p {
+                margin-bottom: 0;
+            }
+            .readmore {
+                a {
+                    color: #FFF;
+                    &:hover,
+                    &:focus {
+                        color: #FFF;
+                    }
+                }
+                a::after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 1;
+                    pointer-events: auto;
+                    content: "";
+                }
+            }
+        }
+    }
 }

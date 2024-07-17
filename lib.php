@@ -22,6 +22,16 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
+function theme_enva_page_init(moodle_page $page) {
+    $page->requires->jquery();
+	if ($page->pagelayout === 'frontpage') {
+        $page->requires->jquery_plugin('jquery.easing.min.1.4', 'theme_enva');
+        $page->requires->jquery_plugin('slideshow', 'theme_enva');
+        $page->requires->jquery_plugin('carousel', 'theme_enva');
+    }
+}
+
 /**
  * Implementation of $THEME->scss
  *
@@ -78,6 +88,13 @@ function theme_enva_pluginfile($course, $cm, $context, $filearea, $args, $forced
         }
         if ($filearea === 'loginbackground') {
             return $theme->setting_file_serve('loginbackground', $args, $forcedownload, $options);
+        }
+        if ($filearea === 'carousel') {
+            $itemid = array_shift($args);
+
+            $fs = get_file_storage();
+            $files = $fs->get_area_files($context->id, 'theme_enva', 'carousel', $itemid, 'itemid', false);
+            send_stored_file(reset($files), 'default', 0, $forcedownload, $options);
         }
     } else {
         send_file_not_found();

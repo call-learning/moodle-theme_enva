@@ -1,0 +1,9 @@
+.path-local-envasyllabus {
+    .syllabus-additional-buttons {
+        display: flex;
+        justify-content: flex-end;
+        .btn {
+            white-space: nowrap;
+        }
+    }
+}

@@ -20,7 +20,7 @@ function replacePlaceholders(content) {
     const placeholderPattern = /\[\[font:core\|([^\]]+)\]\]/g;
     return content.replace(placeholderPattern, (match, p1) => {
         // Construct the replacement path
-        const replacementPath = `/compet/lib/fonts/${p1}`;
+        const replacementPath = `/lib/fonts/${p1}`;
         return replacementPath;
     });
 }

@@ -3,11 +3,3 @@
 @import "slider";
 @import "syllabus";
 @import "enva-components";
-
-$loginbackgroundurl: '/compet/theme/enva/pix/loginbackground.jpg';
-body#page-login-index #page,
-body#page-login-signup #page {
-    background-image: url($loginbackgroundurl);
-    background-repeat: no-repeat;
-    background-size: cover;
-}

@@ -89,10 +89,14 @@
 
     <div class="footer-dark bg-dark text-light">
         <div class="enva-maxwidth">
-            <div class="envafootertext py-4">
-                {{#str}}footertext, theme_enva{{/str}}
+            <div class="envafootertext d-flex py-4">
+                <div class="d-flex">
+                    {{{ output.footer_logo }}}
+                </div>
+                <div class="d-flex pt-2">
+                    {{#str}}footertext, theme_enva{{/str}}
+                </div>
             </div>
-
             {{{ output.debug_footer_html }}}
         </div>
     </div>

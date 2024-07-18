@@ -17,6 +17,29 @@
     }
 }
 
+// This should be the ultimate max-width for the page.
+@media (min-width: 1500px) {
+    .pagelayout-standard,
+    body,
+    body.limitedwidth {
+        #page.drawers {
+            .main-inner {
+                max-width: 1500px;
+            }
+        }
+    }
+    .frontpage-widgets {
+        max-width: 1500px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+// Height set to auto to make the sticky navigation work.
+body,
+html {
+    height: auto;
+}
 // The primary navigation which uses custom styles, custom JavaScript and custom templates
 .primary-navigation {
     .dropdown-toggle.dropdown-item {
@@ -72,6 +95,7 @@
     }
 }
 
+// Set too 100vh to force the footer to the bottom of the page.
 #page.drawers {
     height: auto;
     min-height: 100vh;
@@ -95,7 +119,6 @@
         position: relative;
     }
 }
-
 
 @include media-breakpoint-up(lg) {
     .drawers-container {
@@ -208,6 +231,10 @@ body.limitedwidth #page.drawers .footer-popover {
     max-width: 100%;
 }
 
+.pagelayout-login {
+    height: 100vh;
+}
+
 .pagelayout-login #page-footer {
     display: none;
 }
@@ -247,6 +274,7 @@ body.limitedwidth #page.drawers .footer-popover {
         border-top: none;
         border-radius: 0.5rem !important;
         margin-right: 0.25rem;
+        color: $body-color;
         &:hover,
         &:focus {
             background-color: darken($courseindex-item-page-bg, 5%);

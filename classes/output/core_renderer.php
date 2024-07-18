@@ -163,23 +163,17 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_from_template('theme_enva/components/slideshow', $templatecontext);
     }
 
+    
     /**
-     * Override the core user_picture to force using a larger image on the frontpage
-     * @param stdClass $user
-     * @param array $options
-     * @return string
+     * Render the footer logo
      */
-    // public function user_picture(stdClass $user, array $options = null) {
-    //     global $PAGE;
-    //     if ($PAGE->pagelayout == 'frontpage' ) {
-    //         $options['size'] = 100;
-    //     }
-    //     $userpicture = new user_picture($user);
-    //     foreach ((array)$options as $key=>$value) {
-    //         if (property_exists($userpicture, $key)) {
-    //             $userpicture->$key = $value;
-    //         }
-    //     }
-    //     return $this->render($userpicture);
-    // }
+    public function footer_logo() {
+        $content = '';
+        $content .= html_writer::start_tag('div', ['class' => 'footer-logo']);
+        $content .= html_writer::empty_tag('img', [
+            'src' => $this->image_url('2023_ENVA_Paris_MONO_WH', 'theme_enva'),
+            'alt' => 'Enva Paris']);
+        $content .= html_writer::end_tag('div');
+        return $content;
+    }
 }

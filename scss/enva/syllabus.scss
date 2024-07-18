@@ -7,3 +7,24 @@
         }
     }
 }
+
+.teacherbox {
+    margin-right: 2rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: $courseindex-item-page-bg;
+    border-radius: 0.5rem;
+    .userpicture {
+        border-radius: 50%;
+        margin-right: 0.25rem;
+    }
+    a {
+        color: $courseindex-link-color-selected;
+        font-weight: bold;
+    }
+}
+
+.local-envasyllabus-course-syllabus .syllabus-fullname {
+    font-size: 1.5rem;
+    padding-top: .75em;
+}

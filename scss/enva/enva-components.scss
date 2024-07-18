@@ -228,3 +228,63 @@
     }
 }
 
+.course-pano.wrapper {
+    position:relative;
+    height: 175px;
+    overflow: hidden;
+    position: relative;
+    background: #f4f4f4;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
+}
+.course-pano.title {
+    height: 135px;
+    left: 0;
+    padding: 20px;
+    top: 0;
+	position: absolute;
+}
+.course-pano.title h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #fff !important;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+}
+.course-pano.title h2 span {
+	background: $primary;
+	padding: 4px 8px 8px 8px;
+}
+.course-pano.title h4 {
+    color: #fff !important;
+    margin-left: 15px;
+    font-size: 16px;
+    line-height: 22px;
+}
+.course-pano.title h4 span {
+	background:none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+	border-left: 4px solid $primary;
+	padding: 8px;
+	display: inline-block;
+}
+@media(max-width:979px){
+	.course-pano.title h2 {margin-bottom: 5px;margin-top: 10px;}
+	.course-pano.title h2 > span {font-size: .85em; line-height: 1.1em; padding-top: 6px;}
+	.course-pano.title h4 > span {font-size: .85em; line-height: 1.1em;}
+}
+@media(max-width:767px){
+	.course-pano.title h2 {margin-top: 5px;}
+	.course-pano.title h2 > span {font-size: 0.75em; line-height: 1em;}
+	.course-pano.title h4 {margin-left:0;}
+	.course-pano.title h4 > span {font-size: 0.8em; line-height: 1em;}
+}
+.course-pano > img {
+    bottom: 0;
+	height: 100%;
+    margin: 0 !important;
+    min-height: 175px;
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+	max-width: 100% !important;
+}

@@ -270,4 +270,12 @@ body.limitedwidth #page.drawers .footer-popover {
 .secondary-navigation .navigation {
     border-bottom: 0;
 }
+.page-header-image img.userpicture,
+.block_myprofile .picture img {
+    border-radius: 50%;
+}
 @include bg-variant(".bg-gray", $gray-200, true);
+
+.text-light {
+    color: #898989 !important;
+}

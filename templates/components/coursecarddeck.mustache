@@ -15,20 +15,28 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost/head
+    @template block_myoverview/view-cards
+
+    This template renders the cards view for the myoverview block.
 
     Example context (json):
     {
+        "courses": [
+            {
+                "name": "Assignment due 1",
+                "viewurl": "https://moodlesite/course/view.php?id=2",
+                "courseimage": "https://moodlesite/pluginfile/123/course/overviewfiles/123.jpg",
+                "fullname": "course 3",
+                "hasprogress": true,
+                "progress": 10,
+                "coursecategory": "Miscellaneous"
+            }
+        ]
     }
 }}
-{{{ output.doctype }}}
-<html {{{ output.htmlattributes }}}>
-<head>
-    <title>{{{ output.page_title }}}</title>
-    {{# output.debugging }}
-        <link rel="stylesheet" href="{{ config.wwwroot }}/theme/enva/styles/dev.css?v={{ output.get_time }}" />
-    {{/ output.debugging }}
-    <link rel="shortcut icon" href="{{{ output.favicon }}}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{{ output.standard_head_html }}}
-</head>
+
+<div class="course-card-deck {{$classes}}{{/classes}}" data-region="card-deck" role="list">
+{{#courses}}
+    {{> theme_enva/components/coursecard }}
+{{/courses}}
+</div>

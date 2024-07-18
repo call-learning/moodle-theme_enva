@@ -86,17 +86,29 @@ $popover-max-width: 300px !default;
 $border-radius: .5rem !default;
 $border-radius-lg: .6rem !default;
 
-// stylelint-disable
-$theme-colors: () !default;
-$theme-colors: map-merge((
-    primary: $primary,
-    secondary: $secondary,
-    success: $success,
-    info: $info,
-    warning: $warning,
-    danger: $danger,
-), $theme-colors);
-// stylelint-enable
+$primary:       #0071bc;
+$secondary:     $gray-200;
+$success:       #96cc64;
+$info:          #0071bc;
+$warning:       #f0c418;
+$danger:        #f05466;
+$light:         #eaeaea;
+$dark:          $gray-800 !default;
+
+$theme-colors: ();
+$theme-colors: map-merge(
+    (
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $light,
+        "dark":       $dark
+    ),
+    $theme-colors
+);
 
 $spacer: 1rem !default;
 $spacers: (
@@ -126,21 +138,12 @@ $envapurple: #952D98;
 $envadark: #42145F;
 $course-content-maxwidth: 100%;
 
-// $font-family-sans-serif: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif !default;
-// $font-size-base: 1rem !default;
+$tooltip-bg: $envapurple;
 
-// @font-face {
-//     font-family: 'FontAwesome';
-//     src: url('../../../lib/fonts/fontawesome-webfont.eot?v=#{$fa-version}');
-//     src:
-//         url('../../../lib/fonts/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype'),
-//         url('../../../lib/fonts/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'),
-//         url('../../../lib/fonts/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
-//         url('../../../lib/fonts/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
-//         url('../../../lib/fonts/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
+$card-border-width:                 0;
+$card-border-radius:                0;
+$card-border-color:                 transparent;
+$card-inner-border-radius:          0;
 
 @font-face {
     font-family: 'Source Sans Pro';

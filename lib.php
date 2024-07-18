@@ -40,7 +40,7 @@ function theme_enva_page_init(moodle_page $page) {
  */
 function theme_enva_get_main_scss_content($theme) {
     global $CFG;
-    if ($CFG->debugdeveloper) {
+    if (isset($CFG->debugdeveloper)) {
         return '';
     }
     $scss = '';

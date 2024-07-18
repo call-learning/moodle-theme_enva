@@ -29,6 +29,8 @@ use moodle_url;
 use core_course_list_element;
 use theme_config;
 use context_system;
+use stdClass;
+use user_picture;
 
 /**
  * Theme renderer
@@ -52,6 +54,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     public function root_url() {
         return new moodle_url('/');
+    }
+
+    /**
+     * Are we debugging?
+     */
+    public function debugging() {
+        global $CFG;
+        return isset($CFG->debugdeveloper);
     }
 
     /**
@@ -90,6 +100,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $context = context_system::instance();
 
         $fs = get_file_storage();
+        $slides = [];
         if ($data = json_decode($data)) {
             if (!isset($data->carouselenabled) || !$data->carouselenabled == 1) {
                 return [];
@@ -151,4 +162,24 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         return $this->render_from_template('theme_enva/components/slideshow', $templatecontext);
     }
+
+    /**
+     * Override the core user_picture to force using a larger image on the frontpage
+     * @param stdClass $user
+     * @param array $options
+     * @return string
+     */
+    // public function user_picture(stdClass $user, array $options = null) {
+    //     global $PAGE;
+    //     if ($PAGE->pagelayout == 'frontpage' ) {
+    //         $options['size'] = 100;
+    //     }
+    //     $userpicture = new user_picture($user);
+    //     foreach ((array)$options as $key=>$value) {
+    //         if (property_exists($userpicture, $key)) {
+    //             $userpicture->$key = $value;
+    //         }
+    //     }
+    //     return $this->render($userpicture);
+    // }
 }

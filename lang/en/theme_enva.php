@@ -54,3 +54,6 @@ $string['numberofslides'] = 'Number of slides';
 $string['footertext'] = 'L\'EnvA est un établissement d\'enseignement supérieur et de recherche sous tutelle du Ministère chargé' .
 ' de l\'Agriculture, et membre de la Communauté d\'Universités et d\'Etablissements "Université Paris-Est".<br><br>' .
 ' 7 avenue du Général de Gaulle, 94700 Maisons Alfort';
+
+// Course Image
+$string['uploadimage'] = 'Upload image';

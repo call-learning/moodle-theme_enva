@@ -31,6 +31,7 @@ use theme_config;
 use context_system;
 use stdClass;
 use user_picture;
+use context_course;
 
 /**
  * Theme renderer
@@ -163,7 +164,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_from_template('theme_enva/components/slideshow', $templatecontext);
     }
 
-    
+
     /**
      * Render the footer logo
      */
@@ -175,5 +176,65 @@ class core_renderer extends \theme_boost\output\core_renderer {
             'alt' => 'Enva Paris']);
         $content .= html_writer::end_tag('div');
         return $content;
+    }
+
+    /**
+     * Returns course-specific information to be output on any course page in the header area
+     * (for the current course)
+     *
+     * @return string
+     */
+    public function course_header() {
+        global $COURSE;
+        $header = new \stdClass();
+        $content = parent::course_header();
+        if ($content) {
+            $header->fromformat = $content;
+        }
+        if ($this->page->pagelayout == 'course') {
+            $themeheader = new \stdClass();
+            $themeheader->pagename  = format_string($COURSE->fullname); // Default as course title.
+            $themeheader->courseimage = $this->get_course_header_image_url($COURSE);
+            $themeheader->courseimageeditable = $this->page->user_is_editing() &&
+                has_capability('moodle/course:update', $this->page->context);
+            $themeheader->contextid = $this->page->context->id;
+            $header->contextheaderclasses = 'panoheader';
+            $header->coursesummary = format_text($COURSE->summary, $COURSE->summaryformat);
+            $header->fromtheme = $this->render_from_template('theme_enva/components/course_header', $themeheader);
+        }
+
+
+        return $header;
+    }
+
+        /**
+     * Return the url for course header image.
+     *
+     * @param  Object $course  - optional course, otherwise, this course.
+     * @return string header image url.
+     */
+    public function get_course_header_image_url($course = false) : string {
+        global $CFG, $COURSE;
+
+        // If no course is sent, use the current course.
+        if (!$course) {
+            $course = $COURSE;
+        }
+
+        $course = new core_course_list_element($course);
+        $courseimage = '';
+        foreach ($course->get_course_overviewfiles() as $file) {
+            $name = $file->get_filename();
+            if ($name !== '.') {
+                $courseimage = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(),
+                    $file->get_filearea(), '', $file->get_filepath(), $file->get_filename());
+            }
+
+        }
+        if (!$courseimage) {
+            $courseimage = $this->get_generated_image_for_id($course->id);
+        }
+
+        return $courseimage;
     }
 }

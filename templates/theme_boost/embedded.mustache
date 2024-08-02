@@ -41,16 +41,8 @@
          "fakeblocks": "<h2>Fake blocks html goes here</h2>"
     }
 }}
-{{{ output.doctype }}}
-<html {{{ output.htmlattributes }}}>
-<head>
-    <title>{{{ output.page_title }}}</title>
-    <link rel="stylesheet" href="{{ config.wwwroot }}/theme/enva/styles/dev.css?v={{ output.get_time }}" />
+{{> theme_boost/head }}
 
-    <link rel="shortcut icon" href="{{{ output.favicon }}}" />
-    {{{ output.standard_head_html }}}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
 <body {{{ output.body_attributes }}}>
 {{> core/local/toast/wrapper}}

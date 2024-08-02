@@ -138,7 +138,7 @@
                 section.block {
                     flex: 0 0 calc(33.3333% - 1rem);
                     max-width: calc(33.3333% - 1rem);
-                    margin: 0.5rem !important;
+                    margin: 0.5rem;
                 }
             }
         }
@@ -272,5 +272,11 @@
 .block-full-width {
     max-width: none !important;
     flex: auto !important;
-    overflow: hidden;;
+    overflow: hidden;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    .card-body {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 }

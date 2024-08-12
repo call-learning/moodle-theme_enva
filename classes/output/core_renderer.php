@@ -186,7 +186,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     public function course_header() {
         global $COURSE;
-        $header = new \stdClass();
         $content = parent::course_header();
         if ($content) {
             $header->fromformat = $content;
@@ -198,13 +197,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $themeheader->courseimageeditable = $this->page->user_is_editing() &&
                 has_capability('moodle/course:update', $this->page->context);
             $themeheader->contextid = $this->page->context->id;
+            $header = new \stdClass();
             $header->contextheaderclasses = 'panoheader';
             $header->coursesummary = format_text($COURSE->summary, $COURSE->summaryformat);
             $header->fromtheme = $this->render_from_template('theme_enva/components/course_header', $themeheader);
         }
-
-
-        return $header;
+        return $content;
     }
 
         /**
@@ -214,7 +212,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return string header image url.
      */
     public function get_course_header_image_url($course = false) : string {
-        global $CFG, $COURSE;
+        global $COURSE;
 
         // If no course is sent, use the current course.
         if (!$course) {

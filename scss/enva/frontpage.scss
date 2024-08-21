@@ -280,3 +280,11 @@
         padding-right: 0 !important;
     }
 }
+.line-clamp {
+    display: -webkit-box;            /* Creates a flexible box layout */
+    -webkit-box-orient: vertical;    /* Sets the box orientation to vertical */
+    overflow: hidden;                /* Hides any content that overflows */
+    text-overflow: ellipsis;         /* Adds the ellipsis (...) at the end */
+    -webkit-line-clamp: 3;           /* Limits the block to 3 lines */
+    line-clamp: 3;                   /* Limits the block to 3 lines */
+}

@@ -182,11 +182,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Returns course-specific information to be output on any course page in the header area
      * (for the current course)
      *
-     * @return string
+     * @return \stdClass
      */
     public function course_header() {
         global $COURSE;
         $content = parent::course_header();
+        $header = new \stdClass();
         if ($content) {
             $header->fromformat = $content;
         }
@@ -197,12 +198,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $themeheader->courseimageeditable = $this->page->user_is_editing() &&
                 has_capability('moodle/course:update', $this->page->context);
             $themeheader->contextid = $this->page->context->id;
-            $header = new \stdClass();
             $header->contextheaderclasses = 'panoheader';
             $header->coursesummary = format_text($COURSE->summary, $COURSE->summaryformat);
             $header->fromtheme = $this->render_from_template('theme_enva/components/course_header', $themeheader);
         }
-        return $content;
+        return $header;
     }
 
         /**

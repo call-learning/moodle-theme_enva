@@ -102,7 +102,7 @@ main slideshow
 	text-decoration: none;
 }
 .camera_loader {
-	background: rgba(255, 255, 255, 0.9) url("../pix/slider/camera-loader.gif") no-repeat center;
+	background: rgba(255, 255, 255, 0.9) url("[[pix:theme|slider/camera-loader]]") no-repeat center;
 	background: rgba(255, 255, 255, 0.9);
 	height: 100%;
 	left: 0;
@@ -173,7 +173,7 @@ main slideshow
 	z-index: 10;
 }
 .camera_prevThumbs div {
-	background: url("../pix/slider/camera_skins.png") no-repeat -160px 0;
+	background: url("[[pix:theme|slider/camera_skins]]") no-repeat -160px 0;
 
 	display: block;
 	height: 40px;
@@ -194,7 +194,7 @@ main slideshow
 }
 .camera_nextThumbs div {
 
-	background: url("../pix/slider/camera_skins.png") no-repeat -190px 0;
+	background: url("[[pix:theme|slider/camera_skins]]") no-repeat -190px 0;
 	display: block;
 	height: 40px;
 	margin-top: -20px;
@@ -294,7 +294,7 @@ main slideshow
 	left: 0;
 }
 .camera_prev > span {
-	background: url("../pix/slider/camera_skins.png") no-repeat 0 0;
+	background: url("[[pix:theme|slider/camera_skins]]]") no-repeat 0 0;
 	display: block;
 	height: 40px;
 	width: 40px;
@@ -303,7 +303,7 @@ main slideshow
 	right: 0;
 }
 .camera_next > span {
-	background: url("../pix/slider/camera_skins.png") no-repeat -40px 0;
+	background: url("[[pix:theme|slider/camera_skins]]]") no-repeat -40px 0;
 	display: block;
 	height: 40px;
 	width: 40px;
@@ -312,12 +312,12 @@ main slideshow
 	right: 41px;
 }
 .camera_commands > .camera_play {
-	background: url("../pix/slider/camera_skins.png") no-repeat -80px 0;
+	background: url("[[pix:theme|slider/camera_skins]]]") no-repeat -80px 0;
 	height: 40px;
 	width: 40px;
 }
 .camera_commands > .camera_stop {
-	background: url("../pix/slider/camera_skins.png") no-repeat -120px 0;
+	background: url("[[pix:theme|slider/camera_skins]]]") no-repeat -120px 0;
 	display: block;
 	height: 40px;
 	width: 40px;

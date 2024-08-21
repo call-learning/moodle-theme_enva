@@ -114,6 +114,10 @@
     @include media-breakpoint-up(md) {
         .usermenu {
             margin-right: 80px;
+            .userinitials.size-100 {
+                width: 80px;
+                height: 80px;
+            }
             .userbutton .avatars .realuser {
                 width: 80px;
                 height: 80px;
@@ -160,6 +164,7 @@
 
 // The enva navbar containing the primary navigation.
 .enva-navbar-wrapper {
+    z-index: 1030 !important; // Make sure the navbar is above the block region
     background-color: $navbarbackground;
 }
 .enva-navbar {

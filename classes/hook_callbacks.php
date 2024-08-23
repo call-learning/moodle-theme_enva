@@ -14,18 +14,23 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace theme_enva;
+
 /**
- * Plugin version and other meta-data are defined here.
+ * Class hook_callbacks
  *
- * @package     theme_enva
- * @copyright   2024 Bas Brands <bas@sonsbeekmedia.nl>
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_enva
+ * @copyright  2024 Bas Brands <bas@sonsbeekmedia.nl>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'theme_enva';
-$plugin->release = '1.0.0';
-$plugin->version = 2023080101;
-$plugin->requires = 2022041900;
-$plugin->maturity = MATURITY_STABLE;
+class hook_callbacks {
+    /**
+     * Add the privacy summary to the footer.
+     *
+     * @param \core\hook\output\before_html_attributes $hook
+     */
+    public static function before_html_attributes(\core\hook\output\before_html_attributes $hook): void {
+        global $PAGE;
+        $hook->add_attribute('data-layout', $PAGE->pagelayout);
+    }
+}

@@ -199,7 +199,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 has_capability('moodle/course:update', $this->page->context);
             $themeheader->contextid = $this->page->context->id;
             $header->contextheaderclasses = 'panoheader';
-            $header->coursesummary = format_text($COURSE->summary, $COURSE->summaryformat);
+            // $header->coursesummary = format_text($COURSE->summary, $COURSE->summaryformat);
             $header->fromtheme = $this->render_from_template('theme_enva/components/course_header', $themeheader);
         }
         return $header;

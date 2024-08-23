@@ -91,12 +91,12 @@ $popover-max-width: 300px !default;
 $border-radius: .5rem !default;
 $border-radius-lg: .6rem !default;
 
-$primary:       #5143d9;
+$primary:       #952D98;
 $secondary:     $gray-200;
 $success:       #96cc64;
 $info:          #0071bc;
 $warning:       #f0c418;
-$danger:        #f05466;
+$danger:        rgb(238, 71, 146);
 $light:         #eaeaea;
 $dark:          $gray-800 !default;
 
@@ -130,10 +130,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-$primary-light-background: rgba(81, 67, 217, 0.1);
-$courseindex-item-page-bg: rgba(81, 67, 217, 0.1);
-$courseindex-link-color-selected: #5143d9;
+$activity-icon-collaboration-filter:
+    invert(25%) sepia(54%) saturate(6226%) hue-rotate(279deg) brightness(100%) contrast(102%);
+$primary-light-background: rgba(149, 45, 152, 0.1);
+$courseindex-item-page-bg: rgba(149, 45, 152, 0.1);
+$courseindex-link-color-selected: #952D98;
 $moremenu-height: 45px;
 
 $envabright: #c239ae;

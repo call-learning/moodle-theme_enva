@@ -15,17 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Hook callbacks for Enva
  *
- * @package     theme_enva
- * @copyright   2024 Bas Brands <bas@sonsbeekmedia.nl>
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme_enva
+ * @copyright  2024 Bas Brands <bas@sonsbeekmedia.nl>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'theme_enva';
-$plugin->release = '1.0.0';
-$plugin->version = 2023080101;
-$plugin->requires = 2022041900;
-$plugin->maturity = MATURITY_STABLE;
+$callbacks = [
+    [
+        'hook' => \core\hook\output\before_html_attributes::class,
+        'callback' => \theme_enva\hook_callbacks::class . '::before_html_attributes',
+    ],
+];

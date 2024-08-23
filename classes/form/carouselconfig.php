@@ -46,7 +46,7 @@ class carouselconfig extends dynamic_form {
         // Get the file and create the content based on it.
         $usercontext = context_user::instance($USER->id);
         $fs = get_file_storage();
-        $slides = $this->optional_param('numberofslides', 4, PARAM_INT);
+        $slides = $this->optional_param('numberofslides', 6, PARAM_INT);
 
         for ($i = 1; $i <= $slides; $i++) {
             $fileid = $data->{"image{$i}"};
@@ -115,7 +115,7 @@ class carouselconfig extends dynamic_form {
     protected function definition() {
         $mform =& $this->_form;
         $this->set_display_vertical();
-        $imageoptions = array('maxbytes' => 262144, 'accepted_types' => ['optimised_image']);
+        $imageoptions = array('maxbytes' => 2621440, 'accepted_types' => ['optimised_image']);
 
         $slides = $this->optional_param('numberofslides', 6, PARAM_INT);
 
@@ -130,9 +130,8 @@ class carouselconfig extends dynamic_form {
             $mform->addElement('editor', "text{$i}", get_string('carouseltext', 'theme_enva', $i));
             $mform->disabledIf("text{$i}", "active{$i}", 'notchecked');
             $mform->addElement('static', "currentimage{$i}", get_string('carouselimage', 'theme_enva', $i), "");
-            $mform->addElement('filepicker', "image{$i}", $str, null, $imageoptions);
+            $mform->addElement('filepicker', "image{$i}", get_string('carouselimage', 'theme_enva', $i), null, $imageoptions);
             $mform->disabledIf("image{$i}", "active{$i}", 'notchecked');
-            $str = get_string('carouselimage', 'theme_enva', $i);
             $mform->addElement('text', "link{$i}", get_string('carousellink', 'theme_enva', $i));
             $mform->setType("link{$i}", PARAM_URL);
             $mform->disabledIf("link{$i}", "active{$i}", 'notchecked');

@@ -314,3 +314,9 @@ body.limitedwidth #page.drawers .footer-popover {
         margin: 0;
     }
 }
+
+[data-region=right-hand-drawer].drawer {
+    z-index: 1031;
+    position: fixed;
+    top: 0;
+}

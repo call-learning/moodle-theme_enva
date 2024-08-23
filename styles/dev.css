@@ -31028,6 +31028,10 @@ button.bg-gray:focus {
 .text-light {
   color: #898989 !important; }
 
+.block.block_navigation .block_tree ul {
+  padding: 0;
+  margin: 0; }
+
 .frontpage-widgets {
   display: flex;
   flex-direction: column; }
@@ -31344,7 +31348,7 @@ main slideshow
   text-decoration: none; }
 
 .camera_loader {
-  background: rgba(255, 255, 255, 0.9) url("../pix/slider/camera-loader.gif") no-repeat center;
+  background: rgba(255, 255, 255, 0.9) url("[[pix:theme|slider/camera-loader]]") no-repeat center;
   background: rgba(255, 255, 255, 0.9);
   height: 100%;
   left: 0;
@@ -31415,7 +31419,7 @@ main slideshow
   z-index: 10; }
 
 .camera_prevThumbs div {
-  background: url("../pix/slider/camera_skins.png") no-repeat -160px 0;
+  background: url("[[pix:theme|slider/camera_skins]]") no-repeat -160px 0;
   display: block;
   height: 40px;
   margin-top: -20px;
@@ -31434,7 +31438,7 @@ main slideshow
   z-index: 10; }
 
 .camera_nextThumbs div {
-  background: url("../pix/slider/camera_skins.png") no-repeat -190px 0;
+  background: url("[[pix:theme|slider/camera_skins]]") no-repeat -190px 0;
   display: block;
   height: 40px;
   margin-top: -20px;
@@ -31522,7 +31526,7 @@ main slideshow
   left: 0; }
 
 .camera_prev > span {
-  background: url("../pix/slider/camera_skins.png") no-repeat 0 0;
+  background: url("[[pix:theme|slider/camera_skins]]]") no-repeat 0 0;
   display: block;
   height: 40px;
   width: 40px; }
@@ -31531,7 +31535,7 @@ main slideshow
   right: 0; }
 
 .camera_next > span {
-  background: url("../pix/slider/camera_skins.png") no-repeat -40px 0;
+  background: url("[[pix:theme|slider/camera_skins]]]") no-repeat -40px 0;
   display: block;
   height: 40px;
   width: 40px; }
@@ -31540,12 +31544,12 @@ main slideshow
   right: 41px; }
 
 .camera_commands > .camera_play {
-  background: url("../pix/slider/camera_skins.png") no-repeat -80px 0;
+  background: url("[[pix:theme|slider/camera_skins]]]") no-repeat -80px 0;
   height: 40px;
   width: 40px; }
 
 .camera_commands > .camera_stop {
-  background: url("../pix/slider/camera_skins.png") no-repeat -120px 0;
+  background: url("[[pix:theme|slider/camera_skins]]]") no-repeat -120px 0;
   display: block;
   height: 40px;
   width: 40px; }
@@ -32024,6 +32028,9 @@ Additional CSS for RTL Support
   @media (min-width: 768px) {
     .enva-header .usermenu {
       margin-right: 80px; }
+      .enva-header .usermenu .userinitials.size-100 {
+        width: 80px;
+        height: 80px; }
       .enva-header .usermenu .userbutton .avatars .realuser {
         width: 80px;
         height: 80px;
@@ -32055,6 +32062,7 @@ Additional CSS for RTL Support
   background: linear-gradient(rgba(255, 255, 255, 0), white); }
 
 .enva-navbar-wrapper {
+  z-index: 1030 !important;
   background-color: #46185f; }
 
 .enva-navbar {
@@ -32203,5 +32211,25 @@ Additional CSS for RTL Support
   position: relative;
   width: 100%;
   max-width: 100% !important; }
+
+.line-clamp {
+  display: -webkit-box !important;
+  /* Creates a flexible box layout */
+  -webkit-box-orient: vertical;
+  /* Sets the box orientation to vertical */
+  overflow: hidden;
+  /* Hides any content that overflows */
+  text-overflow: ellipsis;
+  /* Adds the ellipsis (...) at the end */
+  -webkit-line-clamp: 3;
+  /* Limits the block to 3 lines */
+  line-clamp: 3;
+  /* Limits the block to 3 lines */
+  padding: 0 !important; }
+
+html[data-layout="maintenance"] {
+  height: 100%; }
+  html[data-layout="maintenance"] body {
+    height: 100%; }
 
 /*# sourceMappingURL=dev.css.map */

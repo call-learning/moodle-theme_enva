@@ -370,4 +370,25 @@ class setup {
         $carouseldata = json_encode($carouseldata);
         set_config('carouselconfig', $carouseldata, 'theme_enva');
     }
+
+    /**
+     * Remove topcoll format
+     */
+    public static function remove_topcoll_format() {
+        global $DB, $CFG;
+        require_once($CFG->dirroot .'/course/lib.php');
+        $alltopcollcourses = $DB->get_recordset('course', ['format' => 'topcoll']);
+        foreach ($alltopcollcourses as $course) {
+            if (defined('CLI_SCRIPT')) {
+                cli_writeln("Removing topcoll format from course {$course->id}: ". format_string($course->fullname));
+            }
+            $DB->set_field('course', 'format', 'topics', ['id' => $course->id]);
+            $formatdata = [
+                'hiddensections' => 1, // Hidden invisible sections.
+                'coursedisplay' => COURSE_DISPLAY_SINGLEPAGE, // Single page display.
+
+            ];
+            course_get_format($course->id)->update_course_format_options($formatdata);
+        }
+    }
 }

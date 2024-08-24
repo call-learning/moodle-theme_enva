@@ -111,7 +111,7 @@
             box-shadow: 0 0 40px #1d3a531a;
         }
     }
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-down(md) {
         .usermenu {
             margin-right: 80px;
             .userinitials.size-100 {
@@ -139,7 +139,6 @@
             }
         }
     }
-
 }
 
 .userloggedinas .usermenu {
@@ -251,7 +250,7 @@
     position: relative;
     margin-right: 1rem;
     .uploadbutton {
-        position: absolute; 
+        position: absolute;
         top: 0.25rem;
         right: 0.25rem;
     }

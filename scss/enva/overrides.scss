@@ -320,3 +320,7 @@ body.limitedwidth #page.drawers .footer-popover {
     position: fixed;
     top: 0;
 }
+
+body {
+    touch-action: auto !important;
+}

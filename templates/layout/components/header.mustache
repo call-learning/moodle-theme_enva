@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="enva-header enva-maxwidth no-gutters">
-    <div class="col-md-2 col-lg-6 d-flex">
+    <div class="col-6 col-lg-6 d-flex">
         <div class="d-flex align-items-center pr-2 pl-2 my-2">
             <img class="francelogo img-responsive" src="{{{output.root_url}}}/theme/enva/pix/Republique_Francaise.jpg" alt="Republique Francaise" />
         </div>
@@ -54,7 +54,7 @@
         </div>
     </div>
     {{#output.show_login}}
-    <div class="col-md-8 col-lg-6 d-flex align-items-center justify-content-end">
+    <div class="col-6 d-flex align-items-center justify-content-end">
         <div class="enva-header__login">
             <form class="mform" action="{{{output.root_url}}}/login/index.php" method="post">
                 <div class="form-row align-items-center">
@@ -64,7 +64,7 @@
                         </div>
                         <input class="form-control" autocomplete="username" type="text" name="username" placeholder="{{#str}}username{{/str}}" />
                     </div>
-                    <div class="d-flex align-items-stretch ml-2">
+                    <div class="d-flex align-items-stretch ml-md-2">
                         <div class="login-icon d-flex align-items-center">
                             <i class="fa fa-lock"></i>
                         </div>
@@ -85,7 +85,7 @@
     </div>
     {{/output.show_login}}
     {{^output.show_login}}
-        <div class="col-md-8 col-lg-6 d-flex align-items-center justify-content-end">
+        <div class="col-6 d-flex align-items-center justify-content-end">
             <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
                 {{#usermenu}}
                     {{> core/user_menu }}

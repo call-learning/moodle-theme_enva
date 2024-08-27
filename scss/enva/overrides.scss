@@ -167,6 +167,7 @@ html {
 .drawer-left-toggle {
     left: 0;
     margin-top: 0.5rem;
+    z-index: 1;
     .btn {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -179,6 +180,7 @@ html {
 .drawer-right-toggle {
     right: 0;
     margin-top: 0.5rem;
+    z-index: 1;
     .btn {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -323,4 +325,12 @@ body.limitedwidth #page.drawers .footer-popover {
 
 body {
     touch-action: auto !important;
+}
+
+// Prevents long names from breaking the layout.
+.activity-item .activity-name-area {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
 }

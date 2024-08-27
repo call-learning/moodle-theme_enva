@@ -101,10 +101,15 @@
                     height: 40px;
                     border-radius: 40px;
                 }
+                .avatar.current {
+                    bottom: unset;
+                    right: unset;
+                }
 
             }
         }
-        .userinitials.size-35 {
+        .userinitials.size-35,
+        .userinitials.size-100 {
             width: 40px;
             height: 40px;
             font-size: 1rem;

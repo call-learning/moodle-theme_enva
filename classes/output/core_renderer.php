@@ -205,7 +205,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $header;
     }
 
-        /**
+    /**
      * Return the url for course header image.
      *
      * @param  Object $course  - optional course, otherwise, this course.
@@ -234,5 +234,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
 
         return $courseimage;
+    }
+
+    /**
+     * Renders the "breadcrumb" for all pages in the classic way
+     *
+     * @return string the HTML for the navbar.
+     */
+    public function navbar(): string {
+        return $this->render_from_template('core/navbar', $this->page->navbar);
     }
 }

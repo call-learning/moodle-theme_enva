@@ -23,8 +23,11 @@
 }}
 
 {{#courseimage}}
-    <div class="imageeditable" {{#courseimageeditable}}data-region="imageeditable" data-contextid="{{contextid}}"{{/courseimageeditable}}>
-        <img class="img-fluid rounded" alt="{{{subtitle}}}" src="{{{courseimage}}}">
+    <div class="imageeditable"
+        {{#courseimageeditable}}data-region="imageeditable" data-contextid="{{contextid}}"{{/courseimageeditable}}
+        style="background-image: url('{{{courseimage}}}');"
+    >
+        <span class="sr-only">{{{subtitle}}}</span>
     </div>
 {{/courseimage}}
 

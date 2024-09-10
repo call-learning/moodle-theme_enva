@@ -9,6 +9,9 @@
 }
 
 .teacherbox {
+    flex: 0 0 300px;
+    max-width: 300px;
+    display: flex;
     margin-right: 2rem;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
@@ -21,5 +24,8 @@
     a {
         color: $courseindex-link-color-selected;
         font-weight: bold;
+    }
+    .media-body {
+        max-width: 220px;
     }
 }

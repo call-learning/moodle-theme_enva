@@ -198,11 +198,34 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $themeheader->courseimageeditable = $this->page->user_is_editing() &&
                 has_capability('moodle/course:update', $this->page->context);
             $themeheader->contextid = $this->page->context->id;
+            $header->responsible = $this->get_responsible_for_course();
             $header->contextheaderclasses = 'panoheader';
-            // $header->coursesummary = format_text($COURSE->summary, $COURSE->summaryformat);
             $header->fromtheme = $this->render_from_template('theme_enva/components/course_header', $themeheader);
         }
         return $header;
+    }
+
+    /**
+     * Get role users for configured role in theme settings.
+     *
+     * @param array $rolesname
+     * @return array
+     */
+    protected function get_responsible_for_course(): array {
+        global $DB, $COURSE;
+        $rolesnames = get_config('theme_enva', 'responsibleforcourse');
+        $roles = explode(',', $rolesnames);
+        [$where, $params] = $DB->get_in_or_equal($roles);
+        $teacherroles = $DB->get_fieldset_select('role', 'id', 'shortname ' . $where, $params);
+        if (!empty($teacherroles)) {
+            $userfieldsapi = \core_user\fields::for_userpic()->including('username', 'deleted');
+            $userfields = 'ra.id, u.id, u.username' . $userfieldsapi->get_sql('u')->selects;
+            return array_values(
+                get_role_users($teacherroles, context_course::instance($COURSE->id), true, $userfields)
+            );
+        } else {
+            return [];
+        }
     }
 
     /**

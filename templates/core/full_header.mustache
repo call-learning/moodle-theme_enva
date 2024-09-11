@@ -59,6 +59,12 @@
                         <div class="course-summary line-clamp">
                             {{{courseheader.coursesummary}}}
                         </div>
+                        {{#courseheader.responsible}}
+                            <div class="h4">{{{firstname}}} {{{lastname}}}</div>
+                        {{/courseheader.responsible}}
+                        <div class="syllabus-action-button">
+                            {{{courseheader.syllabussummary}}}
+                        </div>
                     </div>
                 {{/contextheader}}
             {{/welcomemessage}}

@@ -57,3 +57,6 @@ $string['footertext'] = 'L\'EnvA est un établissement d\'enseignement supérieu
 
 // Course Image
 $string['uploadimage'] = 'Upload image';
+
+$string['responsibleforcourse'] = 'Responsible role for course';
+$string['responsibleforcoursedesc'] = 'Responsible role name for course, to be shown on course page';

@@ -213,8 +213,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     protected function get_responsible_for_course(): array {
         global $DB, $COURSE;
-        $rolesnames = get_config('theme_enva', 'responsibleforcourse');
-        $roles = explode(',', $rolesnames);
+        // Check if \local_envasyllabus\output\course_syllabus is available, if not return empty array
+        if (!class_exists('\local_envasyllabus\output\course_syllabus')) {
+            return [];
+        }
+        $roles = \local_envasyllabus\output\course_syllabus::RESPONSABLE_ROLES_NAME;
         [$where, $params] = $DB->get_in_or_equal($roles);
         $teacherroles = $DB->get_fieldset_select('role', 'id', 'shortname ' . $where, $params);
         if (!empty($teacherroles)) {

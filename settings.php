@@ -36,8 +36,6 @@ if ($ADMIN->fulltree) {
 
     $ss->add_textarea('scss');
 
-    $ss->add_text('responsibleforcourse');
-
     $settings->add($ss->settingspage);
 
 }

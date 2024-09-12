@@ -26,6 +26,9 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_enva';
 $plugin->release = '1.0.0';
-$plugin->version = 2023080101;
+$plugin->version = 2023080102;
 $plugin->requires = 2022041900;
 $plugin->maturity = MATURITY_STABLE;
+$plugin->dependencies = [
+    'local_envasyllabus' => ANY_VERSION, // This is a dependency for get_responsible_for_course.
+];

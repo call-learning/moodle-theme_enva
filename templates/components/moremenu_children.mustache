@@ -26,7 +26,7 @@
 {{#haschildren}}
     <li class="dropdown nav-item" role="none" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
         <a class="dropdown-toggle nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" id="drop-down-{{moremenuid}}" role="menuitem" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" data-display="static" aria-controls="drop-down-menu-{{moremenuid}}"
+            aria-haspopup="true" aria-expanded="false" aria-controls="drop-down-menu-{{moremenuid}}"
             {{#title}}title="{{.}}"{{/title}}
             {{#isactive}}aria-current="true"{{/isactive}}
             {{^isactive}}tabindex="-1"{{/isactive}}

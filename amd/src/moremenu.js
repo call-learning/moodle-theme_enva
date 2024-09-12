@@ -248,8 +248,6 @@ export default menu => {
 
         const innerMenu = e.target.parentNode.querySelector(Selectors.attributes.menu);
         const toggle = e.target.closest(Selectors.attributes.dropdowntoggle);
-        // If the next sibling is a dropdown menu, then it is the target menu.
-        const targetMenu = e.target.nextElementSibling.classList.contains('dropdown-menu') ? e.target.nextElementSibling : null;
 
         dropdowns.forEach((dropdown) => {
             if (innerMenu && dropdown == innerMenu) {
@@ -263,24 +261,13 @@ export default menu => {
             // Check how for the right side of the toggle button is from the right side of the screen.
             const right = window.innerWidth - toggle.getBoundingClientRect().right;
             // Check if the right is bigger than the width of the toggle.
+            window.console.log('right', right);
+            window.console.log('buttonwidth', toggle.offsetWidth);
             if (right < toggle.offsetWidth) {
                 innerMenu.setAttribute('style', `left: calc(${right}px - 20px);`);
             }
 
             innerMenu.classList.toggle('show');
-            // Get the height of the browser window and get the position of the innerMenu.
-            // If the innerMenu is cut off by the bottom of the screen, reduce the height of the innerMenu
-            // and make it scrollable.
-            const windowHeight = window.innerHeight;
-            if (targetMenu) {
-                const targetMenuHeight = targetMenu.offsetHeight;
-                const targetMenuTop = targetMenu.getBoundingClientRect().top;
-                const targetMenuBottom = targetMenuTop + targetMenuHeight;
-                if (targetMenuBottom > windowHeight) {
-                    targetMenu.style.height = `${windowHeight - targetMenuTop - 20}px`;
-                    targetMenu.style.overflowY = 'auto';
-                }
-            }
         }
         e.stopPropagation();
     };

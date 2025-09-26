@@ -227,6 +227,12 @@ html {
     max-width: 100%;
     margin: 0 auto;
 }
+// No side margins for popup pages.
+body.pagelayout-popup {
+    #page-wrapper #page #page-content {
+        margin: initial;
+    }
+}
 
 .pagelayout-standard #page.drawers .footer-popover,
 body.limitedwidth #page.drawers .footer-popover {

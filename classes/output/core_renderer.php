@@ -212,23 +212,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return array
      */
     protected function get_responsible_for_course(): array {
-        global $DB, $COURSE;
-        // Check if \local_envasyllabus\output\course_syllabus is available, if not return empty array
-        if (!class_exists('\local_envasyllabus\output\course_syllabus')) {
+        global $COURSE;
+        // Check if \local_envasyllabus\local\course_syllabus_helper is available, if not return empty array
+        if (!class_exists('\local_envasyllabus\local\course_syllabus_helper')) {
             return [];
         }
-        $roles = \local_envasyllabus\output\course_syllabus::RESPONSABLE_ROLES_NAME;
-        [$where, $params] = $DB->get_in_or_equal($roles);
-        $teacherroles = $DB->get_fieldset_select('role', 'id', 'shortname ' . $where, $params);
-        if (!empty($teacherroles)) {
-            $userfieldsapi = \core_user\fields::for_userpic()->including('username', 'deleted');
-            $userfields = 'ra.id, u.id, u.username' . $userfieldsapi->get_sql('u')->selects;
-            return array_values(
-                get_role_users($teacherroles, context_course::instance($COURSE->id), true, $userfields)
-            );
-        } else {
-            return [];
-        }
+       return \local_envasyllabus\local\course_syllabus_helper::get_responsible_for_course($COURSE->id);
     }
 
     /**

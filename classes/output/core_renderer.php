@@ -208,16 +208,20 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /**
      * Get role users for configured role in theme settings.
      *
-     * @param array $rolesname
-     * @return array
+     * @return stdClass|null
      */
-    protected function get_responsible_for_course(): array {
+    protected function get_responsible_for_course(): ?stdClass {
         global $COURSE;
-        // Check if \local_envasyllabus\local\course_syllabus_helper is available, if not return empty array
+        // Check if \local_envasyllabus\local\course_syllabus_helper is available.
         if (!class_exists('\local_envasyllabus\local\course_syllabus_helper')) {
-            return [];
+            return null;
         }
-       return \local_envasyllabus\local\course_syllabus_helper::get_responsible_for_course($COURSE->id);
+        $responsible = \local_envasyllabus\local\course_syllabus_helper::get_responsible_for_course($COURSE->id);
+        if (empty($responsible)) {
+            return null;
+        }
+        $responsible = array_shift($responsible);
+        return $responsible;
     }
 
     /**

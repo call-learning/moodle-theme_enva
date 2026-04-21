@@ -115,6 +115,10 @@ $theme-colors: map-merge(
     $theme-colors
 );
 
+// Links
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+
 $spacer: 1rem !default;
 $spacers: (
     0: 0,
@@ -154,3 +158,26 @@ $card-border-color:                 transparent;
 $card-inner-border-radius:          0;
 
 $navbar-height: 45px;
+
+// New in Bootstrap 5.3
+// Links
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+
+// HR
+$hr-opacity: .15 !default;
+
+// Prefix for CSS variables (Bootstrap 5).
+$prefix: bs- !default;
+
+// Tables (Bootstrap 5 replacement for old table accent variable).
+$table-striped-bg-factor: .03 !default;
+
+// Inputs and focus ring.
+$focus-ring-opacity: .75 !default;
+$form-check-input-border: var(--#{$prefix}border-width) solid var(--#{$prefix}gray-500) !default;
+
+// Behat-related transition controls used in Boost presets.
+$behatsite: false !default;
+$enable-transitions: not $behatsite !default;
+$enable-smooth-scroll: not $behatsite !default;

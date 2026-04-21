@@ -313,7 +313,10 @@ body.limitedwidth #page.drawers .footer-popover {
 .block_myprofile .picture img {
     border-radius: 50%;
 }
-@include bg-variant(".bg-gray", $gray-200, true);
+.bg-gray {
+    --bs-bg-opacity: 1;
+    background-color: $gray-200 !important;
+}
 
 .text-light {
     color: #898989 !important;

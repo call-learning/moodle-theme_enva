@@ -39,7 +39,7 @@
     data-course-id="{{{id}}}">
     <a href="{{viewurl}}" tabindex="-1">
         <div class="card-img-top card-course-image" style='background-image: url("{{{courseimage}}}");'>
-            <span class="sr-only">{{{imagealt}}}</span>
+            <span class="visually-hidden">{{{imagealt}}}</span>
         </div>
     </a>
     <div class="card-body course-info-container" id="course-info-container-{{id}}-{{uniqid}}">
@@ -48,7 +48,7 @@
                 <div class="text-muted muted d-flex mb-1 flex-wrap">
                     {{#showshortname}}
                     {{$divider}}{{/divider}}
-                    <span class="sr-only">
+                    <span class="visually-hidden">
                         {{#str}}aria:courseshortname, core_course{{/str}}
                     </span>
                     <div>
@@ -57,7 +57,7 @@
                     {{/showshortname}}
 
                 </div>
-                <a href="{{viewurl}}" class="aalink coursename mr-2">
+                <a href="{{viewurl}}" class="aalink coursename me-2">
                     {{> core_course/favouriteicon }}
                     {{$coursename}}{{/coursename}}
                 </a>
@@ -73,7 +73,7 @@
                 {{/summary}}
                 {{^visible}}
                     <div class="d-flex flex-wrap">
-                        <span class="badge badge-info">{{#str}} hiddenfromstudents {{/str}}</span>
+                        <span class="badge bg-info text-dark">{{#str}} hiddenfromstudents {{/str}}</span>
                     </div>
                 {{/visible}}
             </div>

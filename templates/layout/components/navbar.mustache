@@ -27,7 +27,7 @@
     <nav class="navbar navbar-dark enva-navbar enva-maxwidth navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
         <button class="navbar-toggler aabtn d-block d-md-none px-1 my-1 border-0" data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-primary">
             <span class="navbar-toggler-icon"></span>
-            <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
+            <span class="visually-hidden">{{#str}}sidepanel, core{{/str}}</span>
         </button>
 
         {{#primarymoremenu}}
@@ -41,13 +41,13 @@
             {{{ output.page_heading_menu }}}
         </ul>
 
-        <div id="usernavigation" class="navbar-nav ml-auto">
+        <div id="usernavigation" class="navbar-nav ms-auto">
             {{# output.search_box }}
                 {{{ output.search_box }}}
             {{/output.search_box}}
             {{#langmenu}}
                 {{> theme_boost/language_menu }}
-                <div class="divider border-left h-75 align-self-center mx-1"></div>
+                <div class="divider border-start h-75 align-self-center mx-1"></div>
             {{/langmenu}}
             {{{ output.navbar_plugin_output }}}
             {{{ output.edit_switch }}}

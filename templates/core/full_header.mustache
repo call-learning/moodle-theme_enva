@@ -37,7 +37,7 @@
                 {{{navbar}}}
             </div>
             {{/hasnavbar}}
-            <div class="ml-auto d-flex">
+            <div class="ms-auto d-flex">
                 {{{pageheadingbutton}}}
             </div>
             {{#courseheader.fromformat}}
@@ -54,7 +54,7 @@
             {{/courseheader.fromtheme}}
             {{^welcomemessage}}
                 {{#contextheader}}
-                    <div class="mr-auto align-self-end {{{courseheader.contextheaderclasses}}}">
+                    <div class="me-auto align-self-end {{{courseheader.contextheaderclasses}}}">
                         {{{contextheader}}}
                         <div class="course-summary line-clamp">
                             {{{courseheader.coursesummary}}}
@@ -69,9 +69,9 @@
                 {{/contextheader}}
             {{/welcomemessage}}
             {{> core/welcome }}
-            <div class="header-actions-container ml-auto align-self-start" data-region="header-actions-container">
+            <div class="header-actions-container ms-auto align-self-start" data-region="header-actions-container">
                 {{#headeractions}}
-                    <div class="header-action ml-2">{{{.}}}</div>
+                    <div class="header-action ms-2">{{{.}}}</div>
                 {{/headeractions}}
             </div>
         </div>

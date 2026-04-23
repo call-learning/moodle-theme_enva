@@ -29,7 +29,7 @@
         "welcomemessage": "welcomemessage"
     }
 }}
-<header id="page-header" class="header-maxwidth d-print-none mb-4">
+<header id="page-header" class="header-maxwidth d-print-none mb-4" data-for="page-heading">
     <div class="w-100">
         <div class="d-flex flex-wrap">
             {{#hasnavbar}}
@@ -74,6 +74,11 @@
                     <div class="header-action ms-2">{{{.}}}</div>
                 {{/headeractions}}
             </div>
+        </div>
+        <div class="header-extras-container ms-auto" data-region="header-extras-container">
+            {{#headerextras}}
+                <div class="header-extra ms-2">{{{.}}}</div>
+            {{/headerextras}}
         </div>
     </div>
 </header>

@@ -20,7 +20,6 @@
  * @copyright  2024 Bas Brands <bas@sonsbeekmedia.nl>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-import $ from 'jquery';
 import menu_navigation from "core/menu_navigation";
 /**
  * Moremenu selectors.
@@ -41,7 +40,7 @@ const Selectors = {
     },
     attributes: {
         menu: '[role="menu"]',
-        dropdowntoggle: '[data-toggle="dropdown"]'
+        dropdowntoggle: '[data-bs-toggle="dropdown"]'
     }
 };
 
@@ -242,46 +241,33 @@ export default menu => {
         menu_navigation(menu);
     });
 
-    const toggledropdown = e => {
-        // Close all other dropdowns that are not a parent of the current dropdown.
-        const dropdowns = menu.querySelectorAll('.dropdown-menu');
+    // Allow multi-level dropdowns inside the More menu to stay open when clicking
+    // on nested toggles. Bootstrap 5 closes dropdowns on any click by default;
+    // "outside" means only clicks outside the dropdown close it.
+    menu.querySelectorAll(Selectors.attributes.dropdowntoggle).forEach((toggle) => {
+        toggle.setAttribute('data-bs-auto-close', 'outside');
+    });
 
-        const innerMenu = e.target.parentNode.querySelector(Selectors.attributes.menu);
-        const toggle = e.target.closest(Selectors.attributes.dropdowntoggle);
+    // Ensure only the currently opening dropdown toggle has aria-current="true".
+    // Also reposition the submenu if it would overflow the right edge of the viewport.
+    menu.addEventListener('show.bs.dropdown', (e) => {
+        const toggle = e.target;
 
-        dropdowns.forEach((dropdown) => {
-            if (innerMenu && dropdown == innerMenu) {
-                return;
-            }
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('show');
+        menu.querySelectorAll(`${Selectors.attributes.dropdowntoggle}[aria-current="true"]`).forEach((t) => {
+            if (t !== toggle) {
+                t.removeAttribute('aria-current');
             }
         });
+
+        // Find the submenu about to open (sibling of the toggle).
+        const innerMenu = toggle.parentNode ? toggle.parentNode.querySelector(Selectors.attributes.menu) : null;
         if (innerMenu) {
-            // Check how for the right side of the toggle button is from the right side of the screen.
             const right = window.innerWidth - toggle.getBoundingClientRect().right;
-            // Check if the right is bigger than the width of the toggle.
-            window.console.log('right', right);
-            window.console.log('buttonwidth', toggle.offsetWidth);
             if (right < toggle.offsetWidth) {
-                innerMenu.setAttribute('style', `left: calc(${right}px - 20px);`);
+                innerMenu.style.left = `calc(${right}px - 20px)`;
+            } else {
+                innerMenu.style.left = '';
             }
-
-            innerMenu.classList.toggle('show');
         }
-        e.stopPropagation();
-    };
-
-    // If there are dropdowns in the MoreMenu, add a new
-    // event listener to show the contents on click and prevent the
-    // moreMenu from closing.
-    $('.' + 'dropdown.nav-item').on('show.bs.dropdown', function(e) {
-        const target = e.target;
-        // Get the first UL child of the target
-        const innerMenu = target.querySelector('ul');
-        innerMenu.querySelectorAll('.dropdown').forEach((dropdown) => {
-            dropdown.removeEventListener('click', toggledropdown, true);
-            dropdown.addEventListener('click', toggledropdown, true);
-        });
     });
 };

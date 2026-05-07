@@ -32,9 +32,6 @@ $secondary:     $gray-400 !default;
 $info-outline:    #1f7e9a;
 $warning-outline: #a6670e;
 
-// Tables
-$table-accent-bg:             rgba($black, .03) !default;
-
 // Options
 $enable-responsive-font-sizes: true !default;
 
@@ -78,6 +75,10 @@ $toast-header-background-color:     rgba($white, .1) !default;
 
 // Custom control size
 $custom-control-indicator-size: 1.25rem;
+
+// Fix the edit switch size.
+$form-switch-width: 2.5em;
+$form-check-input-width: 1.25em;
 
 $input-btn-focus-color: rgba($primary, .75) !default;
 
@@ -170,8 +171,9 @@ $hr-opacity: .15 !default;
 // Prefix for CSS variables (Bootstrap 5).
 $prefix: bs- !default;
 
-// Tables (Bootstrap 5 replacement for old table accent variable).
-$table-striped-bg-factor: .03 !default;
+$btn-active-bg-shade-amount:      10%;
+$btn-active-bg-tint-amount:       10%;
+$btn-icon-border-radius: 1rem;
 
 // Inputs and focus ring.
 $focus-ring-opacity: .75 !default;

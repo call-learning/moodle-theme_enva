@@ -15,7 +15,7 @@
         color: #FFF;
         display: flex;
         .inner {
-            padding: 2rem;
+            padding: 1rem;
             flex: 1 0;
             &:hover {
                 background-color: #4a4a4a !important;
@@ -81,8 +81,18 @@
         }
     }
 }
+@include media-breakpoint-up(md) {
+    .iconboxes {
+        & > .iconbox .inner {
+            padding: 2rem;
+        }
+    }
+}
 
 .pagelayout-frontpage {
+    #page.drawers div[role=main] {
+        padding: 0;
+    }
 
     // Remove most of the padding and borders to make sure
     // the frontpage looks clean.
@@ -228,7 +238,7 @@
     flex-basis: auto;
     flex-grow: 0;
     flex-shrink: 0;
-    width: calc(25% - 1rem);
+    width: calc(50% - 1rem);
     margin: 0.5rem;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     border-radius: 0;
@@ -268,7 +278,16 @@
         margin: 1rem 0 .25rem 0;
     }
 }
-
+@include media-breakpoint-up(md) {
+    .card-course {
+        width: calc(33.3333% - 1rem);
+    }
+}
+@include media-breakpoint-up(lg) {
+    .card-course {
+        width: calc(25% - 1rem);
+    }
+}
 .block-full-width {
     max-width: none !important;
     flex: auto !important;
@@ -278,5 +297,8 @@
     .card-body {
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+    .card-title {
+        margin-left: 0.5rem;
     }
 }

@@ -1,3 +1,18 @@
+// Force button hover/active states to always be a shade darker than the base,
+// regardless of text contrast. Bootstrap's button-variant mixin tints (lightens)
+// buttons that have dark text (e.g. secondary, light, warning), which is not the
+// behaviour we want here.
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+        --#{$prefix}btn-hover-bg: #{shade-color($value, $btn-hover-bg-shade-amount)};
+        --#{$prefix}btn-hover-border-color: #{shade-color($value, $btn-hover-border-shade-amount)};
+        --#{$prefix}btn-hover-color: #{color-contrast(shade-color($value, $btn-hover-bg-shade-amount))};
+        --#{$prefix}btn-active-bg: #{shade-color($value, $btn-active-bg-shade-amount)};
+        --#{$prefix}btn-active-border-color: #{shade-color($value, $btn-active-border-shade-amount)};
+        --#{$prefix}btn-active-color: #{color-contrast(shade-color($value, $btn-active-bg-shade-amount))};
+    }
+}
+
 // Override the max-width of the main content area
 @include media-breakpoint-up(md) {
     .pagelayout-standard,
@@ -90,6 +105,12 @@ html {
                 &:hover {
                     border-bottom-color: $envadark;
                 }
+            }
+        }
+        .dropdown-item[aria-current="true"],
+        .dropdown-item.active {
+            &:before {
+                content: none;
             }
         }
     }
@@ -230,7 +251,6 @@ html {
 // No side margins for popup pages.
 body.pagelayout-popup, body.pagelayout-report {
     #page-wrapper #page {
-        overflow: scroll;
         #page-content {
             margin: initial;
         }
@@ -345,4 +365,49 @@ body {
     word-wrap: break-word;
     word-break: break-word;
     hyphens: auto;
+}
+
+// Login page overrides.
+.path-login #page-wrapper #page #page-content {
+    margin: 0 15px;
+    max-width: 100%;
+    min-height: calc(100vh - #{$navbar-height});
+    align-items: center;
+}
+
+.path-login #region-main-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    padding: 2rem;
+    width: 100%;
+}
+@include media-breakpoint-up(md) {
+    .path-login #page {
+        @include gradient-x($gray-100, $gray-300, 0%, 100%);
+    }
+    .login-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: $white;
+        padding: 3rem;
+        box-shadow: $box-shadow;
+        @include border-radius();
+    }
+}
+
+.table {
+    border-top: unset;
+}
+
+.simplesearchform {
+    @if $enable-rounded {
+        .input-group input.form-control {
+            border-top-left-radius: $border-radius !important;
+            border-bottom-left-radius: $border-radius !important;
+        }
+    }
 }

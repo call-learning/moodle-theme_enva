@@ -39,7 +39,6 @@ export const init = () => {
     const editableImages = document.querySelectorAll('[data-region="imageeditable"]');
     editableImages.forEach((editableImage) => {
         const contextId = editableImage.getAttribute('data-contextid');
-        const image = editableImage.querySelector('img');
 
         const fileInput = document.createElement('input');
         fileInput.setAttribute('type', 'file');
@@ -74,14 +73,12 @@ export const init = () => {
             reader.addEventListener('load', () => {
                 imageHandler.saveImage(contextId, 'overviewfiles', file, reader.result).then((result) => {
                     if (result.success) {
-                        image.setAttribute('src', result.fileurl);
+                        editableImage.setAttribute('style', `background-image: url(${result.fileurl});`);
                     }
                     return '';
-
                 }).catch(Notification.exception);
             });
             reader.readAsDataURL(file);
         });
     });
 };
-

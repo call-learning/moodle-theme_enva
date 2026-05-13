@@ -20,7 +20,7 @@
  * @copyright  2024 Bas Brands <bas@sonsbeekmedia.nl>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-import menu_navigation from "core/menu_navigation";
+import menuNavigation from "core/menu_navigation";
 /**
  * Moremenu selectors.
  */
@@ -233,12 +233,12 @@ export default menu => {
     }
     // Populate the more dropdown menu with additional nodes if necessary, depending on the current screen size.
     autoCollapse(menu);
-    menu_navigation(menu);
+    menuNavigation(menu);
 
     // When the screen size changes make sure the menu still fits.
     window.addEventListener('resize', () => {
         autoCollapse(menu);
-        menu_navigation(menu);
+        menuNavigation(menu);
     });
 
     // Allow multi-level dropdowns inside the More menu to stay open when clicking

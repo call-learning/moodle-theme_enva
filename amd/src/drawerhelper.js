@@ -30,12 +30,12 @@ export const init = () => {
     }
     drawerRight.addEventListener(Drawers.eventTypes.drawerShow, () => {
         // The drawer which will be shown.
-        const container = document.querySelector('[date-region="drawers-container"]');
+        const container = document.querySelector('[data-region="drawers-container"]');
         container.classList.add('drawer-open');
     });
     drawerRight.addEventListener(Drawers.eventTypes.drawerHide, () => {
         // The drawer which will be hidden.
-        const container = document.querySelector('[date-region="drawers-container"]');
+        const container = document.querySelector('[data-region="drawers-container"]');
         container.classList.remove('drawer-open');
     });
 };

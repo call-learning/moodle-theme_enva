@@ -36,18 +36,18 @@ class envaprimary {
 
     /**
      * primary constructor.
-    * @param \moodle_page $page
-    */
+     * @param \moodle_page $page
+     */
     public function __construct($page) {
         $this->page = $page;
     }
 
     /**
      * Combine the various menus into a standardized output.
-    *
-    * @param renderer_base|null $output
-    * @return array
-    */
+     *
+     * @param renderer_base|null $output
+     * @return array
+     */
     public function export_for_template(?renderer_base $output = null): array {
         if (!$output) {
             $output = $this->page->get_renderer('core');
@@ -69,10 +69,10 @@ class envaprimary {
 
     /**
      * Get the primary nav object and standardize the output
-    *
-    * @param \navigation_node|null $parent used for nested nodes, by default the primarynav node
-    * @return array
-    */
+     *
+     * @param \navigation_node|null $parent used for nested nodes, by default the primarynav node
+     * @return array
+     */
     protected function get_primary_nav($parent = null): array {
         if ($parent === null) {
             $parent = $this->page->primarynav;
@@ -80,7 +80,7 @@ class envaprimary {
         $nodes = [];
         foreach ($parent->children as $node) {
             $children = $this->get_primary_nav($node);
-            $activechildren = array_filter($children, function($child) {
+            $activechildren = array_filter($children, function ($child) {
                 return !empty($child['isactive']);
             });
             if ($node->preceedwithhr && count($nodes) && empty($nodes[count($nodes) - 1]['divider'])) {
@@ -103,11 +103,11 @@ class envaprimary {
 
     /**
      * Custom menu items reside on the same level as the original nodes.
-    * Fetch and convert the nodes to a standardised array.
-    *
-    * @param renderer_base $output
-    * @return array
-    */
+     * Fetch and convert the nodes to a standardised array.
+     *
+     * @param renderer_base $output
+     * @return array
+     */
     protected function get_custom_menu(renderer_base $output): array {
         global $CFG;
 
@@ -129,15 +129,15 @@ class envaprimary {
 
     /**
      * When defining custom menu items, the active flag is not obvserved correctly. Therefore, the merge of the primary
-    * and custom navigation must be handled a bit smarter. Change the "isactive" flag of the nodes (this may set by
-    * default in the primary nav nodes but is entirely missing in the custom nav nodes).
-    * Set the $expandedmenu argument to true when the menu for the mobile template is build.
-    *
-    * @param array $primary
-    * @param array $custom
-    * @param bool $expandedmenu
-    * @return array
-    */
+     * and custom navigation must be handled a bit smarter. Change the "isactive" flag of the nodes (this may set by
+     * default in the primary nav nodes but is entirely missing in the custom nav nodes).
+     * Set the $expandedmenu argument to true when the menu for the mobile template is build.
+     *
+     * @param array $primary
+     * @param array $custom
+     * @param bool $expandedmenu
+     * @return array
+     */
     protected function merge_primary_and_custom(array $primary, array $custom, bool $expandedmenu = false): array {
         if (empty($custom)) {
             return $primary; // No custom nav, nothing to merge.
@@ -164,16 +164,16 @@ class envaprimary {
 
     /**
      * Recursive checks if any of the children is active. If that's the case this node (the parent) is active as
-    * well. If the node has no children, check if the node itself is active. Use pass by reference for the node
-    * object because we actively change/set the "isactive" flag inside the method and this needs to be kept at the
-    * callers side.
-    * Set $expandedmenu to true, if the mobile menu is done, in this case the active flag gets the node that is
-    * actually active, while the parent hierarchy of the active node gets the flag isopen.
-    *
-    * @param object $node
-    * @param bool $expandedmenu
-    * @return bool
-    */
+     * well. If the node has no children, check if the node itself is active. Use pass by reference for the node
+     * object because we actively change/set the "isactive" flag inside the method and this needs to be kept at the
+     * callers side.
+     * Set $expandedmenu to true, if the mobile menu is done, in this case the active flag gets the node that is
+     * actually active, while the parent hierarchy of the active node gets the flag isopen.
+     *
+     * @param object $node
+     * @param bool $expandedmenu
+     * @return bool
+     */
     protected function flag_active_nodes(object $node, bool $expandedmenu = false): bool {
         global $FULLME;
         $active = false;
@@ -237,12 +237,12 @@ class envaprimary {
 
     /**
      * Get/Generate the user menu.
-    *
-    * This is leveraging the data from user_get_user_navigation_info and the logic in $OUTPUT->user_menu()
-    *
-    * @param renderer_base $output
-    * @return array
-    */
+     *
+     * This is leveraging the data from user_get_user_navigation_info and the logic in $OUTPUT->user_menu()
+     *
+     * @param renderer_base $output
+     * @return array
+     */
     public function get_user_menu(renderer_base $output): array {
         global $CFG, $USER, $PAGE;
         require_once($CFG->dirroot . '/user/lib.php');
@@ -259,7 +259,7 @@ class envaprimary {
         // Gather all the avatar data to be displayed in the user menu.
         $usermenudata['avatardata'][] = [
             'content' => $info->metadata['useravatar'],
-            'classes' => 'current'
+            'classes' => 'current',
         ];
         $usermenudata['userfullname'] = $info->metadata['realuserfullname'] ?? $info->metadata['userfullname'];
 
@@ -267,11 +267,11 @@ class envaprimary {
         if ($info->metadata['asotheruser']) {
             $usermenudata['avatardata'][] = [
                 'content' => $info->metadata['realuseravatar'],
-                'classes' => 'realuser'
+                'classes' => 'realuser',
             ];
             $usermenudata['metadata'][] = [
                 'content' => get_string('loggedinas', 'moodle', $info->metadata['userfullname']),
-                'classes' => 'viewingas'
+                'classes' => 'viewingas',
             ];
         }
 
@@ -297,12 +297,12 @@ class envaprimary {
                 $customclass = str_replace('##GENERATEDCLASS##', $generatedclass, ($value['class'] ?? ''));
                 $usermenudata['metadata'][] = [
                     'content' => $content,
-                    'classes' => $customclass
+                    'classes' => $customclass,
                 ];
             }
         }
 
-        $modifiedarray = array_map(function($value) {
+        $modifiedarray = array_map(function ($value) {
             $value->divider = $value->itemtype == 'divider';
             $value->link = $value->itemtype == 'link';
             if (isset($value->pix) && !empty($value->pix)) {

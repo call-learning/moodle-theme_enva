@@ -31,9 +31,11 @@
                 "progress": 10,
                 "visible": true
             }
-        ]
+        ],
+        "mustachelint": true
     }
 }}
+{{#mustachelint}}<div class="card-deck" role="list">{{/mustachelint}}
 <div class="card card-course" role="listitem"
     data-region="course-content"
     data-course-id="{{{id}}}">
@@ -81,3 +83,4 @@
         </div>
     </div>
 </div>
+{{#mustachelint}}</div>{{/mustachelint}}

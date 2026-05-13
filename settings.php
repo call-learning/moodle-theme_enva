@@ -26,7 +26,6 @@ defined('MOODLE_INTERNAL') || die;
 require_once(__DIR__ . "/simple_theme_settings.class.php");
 
 if ($ADMIN->fulltree) {
-
     $settings = new theme_boost_admin_settingspage_tabs('themesettingenva', get_string('configtitle', 'theme_boost'));
     $page = new admin_settingpage('theme_enva_general', get_string('generalsettings', 'theme_boost'));
 
@@ -37,5 +36,4 @@ if ($ADMIN->fulltree) {
     $ss->add_textarea('scss');
 
     $settings->add($ss->settingspage);
-
 }

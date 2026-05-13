@@ -115,18 +115,26 @@ class carouselconfig extends dynamic_form {
     protected function definition() {
         $mform =& $this->_form;
         $this->set_display_vertical();
-        $imageoptions = array('maxbytes' => 2621440, 'accepted_types' => ['optimised_image']);
+        $imageoptions = ['maxbytes' => 2621440, 'accepted_types' => ['optimised_image']];
 
         $slides = $this->optional_param('numberofslides', 6, PARAM_INT);
 
-        $mform->addElement('checkbox', "carouselenabled", get_string('carouselenabled', 'theme_enva'),
-        get_string('carouselslideactive', 'theme_enva'));
+        $mform->addElement(
+            'checkbox',
+            "carouselenabled",
+            get_string('carouselenabled', 'theme_enva'),
+            get_string('carouselslideactive', 'theme_enva')
+        );
 
         for ($i = 1; $i <= $slides; $i++) {
             $mform->addElement('header', "slide{$i}", get_string('carouselslide', 'theme_enva', $i));
             $mform->addElement('text', "title{$i}", get_string('carouseltitle', 'theme_enva', $i));
-            $mform->addElement('checkbox', "active{$i}", get_string('carouselslideactivedesc', 'theme_enva'),
-                get_string('carouselslideactive', 'theme_enva'));
+            $mform->addElement(
+                'checkbox',
+                "active{$i}",
+                get_string('carouselslideactivedesc', 'theme_enva'),
+                get_string('carouselslideactive', 'theme_enva')
+            );
             $mform->addElement('editor', "text{$i}", get_string('carouseltext', 'theme_enva', $i));
             $mform->disabledIf("text{$i}", "active{$i}", 'notchecked');
             $mform->addElement('static', "currentimage{$i}", get_string('carouselimage', 'theme_enva', $i), "");
@@ -139,6 +147,11 @@ class carouselconfig extends dynamic_form {
         }
     }
 
+    /**
+     * Set data for the form, in this case we need to get the current images for the filepicker element.
+     *
+     * @return void
+     */
     public function set_data_for_dynamic_submission(): void {
         $data = get_config('theme_enva', 'carouselconfig');
         $data = json_decode($data);

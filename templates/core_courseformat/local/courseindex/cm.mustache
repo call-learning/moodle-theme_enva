@@ -29,9 +29,11 @@
         "uniqid": "0",
         "accessvisible": 1,
         "hascmrestrictions": 0,
-        "indent": 1
+        "indent": 1,
+        "mustachelint": true
     }
 }}
+{{#mustachelint}}<ul role="tree">{{/mustachelint}}
 <li class="courseindex-item
         {{#isactive}}active{{/isactive}}
         {{#hascmrestrictions}}restrictions{{/hascmrestrictions}}
@@ -72,6 +74,7 @@
         {{/sectioninfo}}
     {{/hasdelegatedsection}}
 </li>
+{{#mustachelint}}</ul>{{/mustachelint}}
 {{$ core_courseformat/local/courseindex/cm-js}}
 {{#js}}
 require(['theme_enva/local/courseindex/cm'], function(component) {

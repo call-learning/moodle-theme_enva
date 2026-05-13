@@ -22,10 +22,14 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
+/**
+ * Fetch the frontpage slideshow JS
+ * @param moodle_page $page
+ * @return void
+ */
 function theme_enva_page_init(moodle_page $page) {
     $page->requires->jquery();
-	if ($page->pagelayout === 'frontpage') {
+    if ($page->pagelayout === 'frontpage') {
         $page->requires->jquery_plugin('jquery.easing.min.1.4', 'theme_enva');
         $page->requires->jquery_plugin('slideshow', 'theme_enva');
         $page->requires->jquery_plugin('carousel', 'theme_enva');

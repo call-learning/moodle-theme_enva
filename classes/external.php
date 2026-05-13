@@ -29,12 +29,12 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once("$CFG->libdir/externallib.php");
 
-use \core_external\external_api;
-use \core_external\external_function_parameters;
-use \core_external\external_value;
-use \core_external\external_single_structure;
-use \theme_enva\imagehandler;
-use \core\context;
+use core_external\external_api;
+use core_external\external_function_parameters;
+use core_external\external_value;
+use core_external\external_single_structure;
+use theme_enva\imagehandler;
+use core\context;
 
 /**
  * External API class.
@@ -44,7 +44,6 @@ use \core\context;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class external extends external_api {
-
     /**
      * Description of the parameters suitable for the `update_image` function.
      *
@@ -57,7 +56,7 @@ class external extends external_api {
                 'imagefilename' => new external_value(PARAM_TEXT, 'Image filename', VALUE_REQUIRED),
                 'filearea' => new external_value(PARAM_AREA, 'File area', VALUE_REQUIRED),
                 'contextid' => new external_value(PARAM_INT, 'Contextid', VALUE_REQUIRED),
-            ], 'Params wrapper - just here to accommodate optional values', VALUE_REQUIRED)
+            ], 'Params wrapper - just here to accommodate optional values', VALUE_REQUIRED),
         ];
         return new external_function_parameters($parameters);
     }
@@ -102,7 +101,7 @@ class external extends external_api {
         $keys = [
             'success' => new external_value(PARAM_BOOL, 'Was the image successfully changed', VALUE_REQUIRED),
             'warning' => new external_value(PARAM_TEXT, 'Warning', VALUE_OPTIONAL),
-            'fileurl' => new external_value(PARAM_URL, 'New file url', VALUE_REQUIRED)
+            'fileurl' => new external_value(PARAM_URL, 'New file url', VALUE_REQUIRED),
         ];
 
         return new external_single_structure($keys, 'coverimage');
@@ -118,7 +117,7 @@ class external extends external_api {
             'params' => new external_single_structure([
                 'contextid' => new external_value(PARAM_INT, 'Contextid', VALUE_REQUIRED),
                 'filearea' => new external_value(PARAM_AREA, 'File area', VALUE_REQUIRED),
-            ], 'Params wrapper - just here to accommodate optional values', VALUE_REQUIRED)
+            ], 'Params wrapper - just here to accommodate optional values', VALUE_REQUIRED),
         ];
         return new external_function_parameters($parameters);
     }
@@ -172,7 +171,7 @@ class external extends external_api {
             'params' => new external_single_structure([
                 'contextid' => new external_value(PARAM_INT, 'Contextid', VALUE_REQUIRED),
                 'alt' => new external_value(PARAM_TEXT, 'Alt text', VALUE_REQUIRED),
-            ], 'Params wrapper - just here to accommodate optional values', VALUE_REQUIRED)
+            ], 'Params wrapper - just here to accommodate optional values', VALUE_REQUIRED),
         ];
         return new external_function_parameters($parameters);
     }
@@ -180,10 +179,10 @@ class external extends external_api {
     /**
      * Save the image alt text and return any warnings.
      *
-     * @param   string $params parameters for saving the image
+     * @param   array $params parameters for saving the image alt text
      * @return  array the save image return values
      */
-    public static function imagealt(): array {
+    public static function imagealt($params): array {
         global $USER;
 
         $params = self::validate_parameters(self::imagealt_parameters(), ['params' => $params])['params'];

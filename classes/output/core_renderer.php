@@ -41,7 +41,6 @@ use context_course;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class core_renderer extends \theme_boost\output\core_renderer {
-
     /**
      * Get the current time, used for cache busting
      * @return int
@@ -69,7 +68,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Show the login form
      */
     public function show_login() {
-        if (!isloggedin() or isguestuser()) {
+        if (!isloggedin() || isguestuser()) {
             return true;
         }
         return false;
@@ -145,7 +144,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * Render the frontpage slideshow
      */
     public function frontpage_slideshow() {
-        global $PAGE;
         $configuration = $this->slideshow_configuration();
         $enabled = false;
         if (!empty($configuration)) {
@@ -157,7 +155,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             "imagepath" => new moodle_url('/theme/enva/pix/slideshow/'),
             "slides" => $configuration,
         ];
-        if ($PAGE->user_is_editing()) {
+        if ($this->page->user_is_editing()) {
             $templatecontext["editing"] = true;
         }
 
@@ -230,7 +228,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @param  Object $course  - optional course, otherwise, this course.
      * @return string header image url.
      */
-    public function get_course_header_image_url($course = false) : string {
+    public function get_course_header_image_url($course = false): string {
         global $COURSE;
 
         // If no course is sent, use the current course.
@@ -243,10 +241,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
         foreach ($course->get_course_overviewfiles() as $file) {
             $name = $file->get_filename();
             if ($name !== '.') {
-                $courseimage = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(),
-                    $file->get_filearea(), '', $file->get_filepath(), $file->get_filename());
+                $courseimage = moodle_url::make_pluginfile_url(
+                    $file->get_contextid(),
+                    $file->get_component(),
+                    $file->get_filearea(),
+                    '',
+                    $file->get_filepath(),
+                    $file->get_filename()
+                );
             }
-
         }
         if (!$courseimage) {
             $courseimage = $this->get_generated_image_for_id($course->id);

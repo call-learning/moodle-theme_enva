@@ -74,7 +74,7 @@ html {
         width: 250px;
 
         .dropdown-item {
-            white-space: wrap;
+            white-space: normal;
             display: flex;
             align-items: start;
         }
@@ -249,7 +249,8 @@ html {
     margin: 0 auto;
 }
 // No side margins for popup pages.
-body.pagelayout-popup, body.pagelayout-report {
+body.pagelayout-popup,
+body.pagelayout-report {
     #page-wrapper #page {
         #page-content {
             margin: initial;
@@ -303,7 +304,7 @@ body.limitedwidth #page.drawers .footer-popover {
         border-bottom: solid 3px transparent;
         border-left: none;
         border-top: none;
-        border-radius: 0.5rem !important;
+        border-radius: 0.5rem !important; /* stylelint-disable-line declaration-no-important */
         margin-right: 0.25rem;
         color: $body-color;
         &:hover,
@@ -321,7 +322,7 @@ body.limitedwidth #page.drawers .footer-popover {
             &:focus,
             &:hover {
                 background-color: darken($courseindex-item-page-bg, 5%);
-                border-bottom-color: transparent
+                border-bottom-color: transparent;
             }
         }
     }
@@ -335,11 +336,11 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 .bg-gray {
     --bs-bg-opacity: 1;
-    background-color: $gray-200 !important;
+    background-color: $gray-200 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .text-light {
-    color: #898989 !important;
+    color: #898989 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .block.block_navigation .block_tree {
@@ -356,7 +357,7 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 body {
-    touch-action: auto !important;
+    touch-action: auto !important; /* stylelint-disable-line declaration-no-important */
 }
 
 // Prevents long names from breaking the layout.
@@ -385,6 +386,7 @@ body {
     padding: 2rem;
     width: 100%;
 }
+
 @include media-breakpoint-up(md) {
     .path-login #page {
         @include gradient-x($gray-100, $gray-300, 0%, 100%);
@@ -406,8 +408,8 @@ body {
 .simplesearchform {
     @if $enable-rounded {
         .input-group input.form-control {
-            border-top-left-radius: $border-radius !important;
-            border-bottom-left-radius: $border-radius !important;
+            border-top-left-radius: $border-radius !important; /* stylelint-disable-line declaration-no-important */
+            border-bottom-left-radius: $border-radius !important; /* stylelint-disable-line declaration-no-important */
         }
     }
 }

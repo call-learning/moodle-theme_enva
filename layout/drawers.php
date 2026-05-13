@@ -117,6 +117,6 @@ echo $OUTPUT->render_from_template('theme_enva/layout/drawers', $templatecontext
 
 global $SESSION;
 // Make sure if we use the login form and $SESSION->wantsurl is not set, then set it here.
-if ((!isloggedin() or isguestuser()) && empty($SESSION->wantsurl)) {
+if ((!isloggedin() || isguestuser()) && empty($SESSION->wantsurl)) {
     $SESSION->wantsurl = qualified_me();
 }

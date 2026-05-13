@@ -36,21 +36,21 @@ require_once($CFG->dirroot . '/course/renderer.php');
  */
 class course_renderer extends core_course_renderer {
         /**
-     * Returns HTML to print list of available courses for the frontpage
-     *
-     * @return string
-     */
+         * Returns HTML to print list of available courses for the frontpage
+         *
+         * @return string
+         */
     public function frontpage_available_courses() {
         global $CFG;
 
         $chelper = new \coursecat_helper();
-        $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED)->set_courses_display_options(array(
+        $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED)->set_courses_display_options([
                     'recursive' => true,
                     'limit' => $CFG->frontpagecourselimit,
                     'viewmoreurl' => new moodle_url('/course/index.php'),
-                    'viewmoretext' => new \lang_string('fulllistofcourses')));
+                    'viewmoretext' => new \lang_string('fulllistofcourses')]);
 
-        $chelper->set_attributes(array('class' => 'frontpage-course-list-all'));
+        $chelper->set_attributes(['class' => 'frontpage-course-list-all']);
         $courses = \core_course_category::get(0)->get_courses($chelper->get_courses_display_options());
         $totalcount = \core_course_category::get(0)->get_courses_count($chelper->get_courses_display_options());
         if (!$totalcount && !$this->page->user_is_editing() && has_capability('moodle/course:create', context_system::instance())) {
@@ -69,7 +69,7 @@ class course_renderer extends core_course_renderer {
     protected function coursecat_course_cards($courses) {
         global $CFG;
 
-        $template = new stdClass;
+        $template = new stdClass();
         $template->courses = [];
         foreach ($courses as $course) {
             $course = get_course($course->id);
@@ -90,7 +90,7 @@ class course_renderer extends core_course_renderer {
      * @param  Object $course  - optional course, otherwise, this course.
      * @return string header image alt text.
      */
-    public function get_course_header_image_alt($course = false) : string {
+    public function get_course_header_image_alt($course = false): string {
         global $COURSE, $DB;
 
         // If no course is sent, use the current course.

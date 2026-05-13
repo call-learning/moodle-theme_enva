@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace theme_enva;
 
 use context_course;
@@ -278,7 +279,7 @@ class setup {
         ],
         'moodle' => [
             'block_html_allowcssclasses' => 1,
-        ]
+        ],
     ];
 
     /**
@@ -343,7 +344,8 @@ class setup {
         foreach (self::CAROUSEL_DATA as $index => $slide) {
             $slideindex = $index + 1;
             $carouseldata = (object) array_merge(
-                (array) $carouseldata, [
+                (array) $carouseldata,
+                [
                 "title$slideindex" => $slide['title'],
                 "active$slideindex" => 1,
                 "text$slideindex" => (object) [
@@ -351,10 +353,11 @@ class setup {
                     "format" => FORMAT_HTML,
                 ],
                 "link$slideindex" => $slide['link'] ?? '',
-            ]);
+                ]
+            );
             $files = $fs->get_area_files($context->id, 'theme_enva', 'carousel', $slideindex, 'itemid, filepath,
                 filename', false);
-            $existing = array_filter($files, function($file) use ($slideindex) {
+            $existing = array_filter($files, function ($file) use ($slideindex) {
                 return $file->get_filename() === 'slide' . $slideindex . '.jpg';
             });
             if ($existing) {
@@ -362,8 +365,14 @@ class setup {
                     $existingfile->delete();
                 }
             }
-            $file = setup_utils::upload_file($context->id, 'theme_enva', 'carousel', $slideindex,
-                "{$CFG->dirroot}/theme/enva/{$slide['imagepath']}", "slide$slideindex.jpg");
+            $file = setup_utils::upload_file(
+                $context->id,
+                'theme_enva',
+                'carousel',
+                $slideindex,
+                "{$CFG->dirroot}/theme/enva/{$slide['imagepath']}",
+                "slide$slideindex.jpg"
+            );
             $carouseldata->{"image$slideindex"} = $file->get_filename();
         }
         $carouseldata->carouselenabled = 1;
@@ -376,11 +385,11 @@ class setup {
      */
     public static function remove_topcoll_format() {
         global $DB, $CFG;
-        require_once($CFG->dirroot .'/course/lib.php');
+        require_once($CFG->dirroot . '/course/lib.php');
         $alltopcollcourses = $DB->get_recordset('course', ['format' => 'topcoll']);
         foreach ($alltopcollcourses as $course) {
             if (defined('CLI_SCRIPT')) {
-                cli_writeln("Removing topcoll format from course {$course->id}: ". format_string($course->fullname));
+                cli_writeln("Removing topcoll format from course {$course->id}: " . format_string($course->fullname));
             }
             $DB->set_field('course', 'format', 'topics', ['id' => $course->id]);
             $formatdata = [

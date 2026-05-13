@@ -15,16 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Parent theme: Bootstrapbase by Bas Brands
- * Built on: Essential by Julian Ridden
+ * Register the jQuery plugins used by the theme.
  *
- * @package   theme_lambda
- * @copyright 2023 redPIthemes
- *
+ * @package    theme_enva
+ * @copyright  2026 Bas Brands <bas@sonsbeekmedia.nl>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugins = array(
-	'jquery.easing.min.1.4'	=> array('files' => array('jquery.easing.min.1.4.js')),
-	'slideshow' => array('files' => array('camera_slideshow.js')),
-	'carousel' => array('files' => array('carousel.js'))
-);
+defined('MOODLE_INTERNAL') || die();
+
+$plugins = [
+    'jquery.easing.min.1.4' => ['files' => ['jquery.easing.min.1.4.js']],
+    'slideshow' => ['files' => ['camera_slideshow.js']],
+    'carousel' => ['files' => ['carousel.js']],
+];

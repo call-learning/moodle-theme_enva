@@ -21,8 +21,10 @@
 
     Example context (json):
     {
+        "mustachelint": true
     }
 }}
+{{#mustachelint}}<ul class="unlist" role="menu">{{/mustachelint}}
 {{#haschildren}}
     <li class="dropdown nav-item" role="none" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
         <a class="dropdown-toggle nav-link {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" id="drop-down-{{moremenuid}}" role="menuitem" data-bs-toggle="dropdown"
@@ -54,3 +56,4 @@
         </a>
     </li>
 {{/haschildren}}
+{{#mustachelint}}</ul>{{/mustachelint}}

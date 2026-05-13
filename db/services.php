@@ -27,29 +27,29 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$functions = array(
-    'theme_enva_update_image' => array(
+$functions = [
+    'theme_enva_update_image' => [
         'classname'     => 'theme_enva\external',
         'methodname'    => 'update_image',
         'description'   => 'Update image',
         'type'          => 'write',
         'loginrequired' => true,
         'ajax'          => true,
-    ),
-    'theme_enva_delete_image' => array(
+    ],
+    'theme_enva_delete_image' => [
         'classname'     => 'theme_enva\external',
         'methodname'    => 'delete_image',
         'description'   => 'Delete image',
         'type'          => 'write',
         'loginrequired' => true,
         'ajax'          => true,
-    ),
-    'theme_enva_imagealt' => array(
+    ],
+    'theme_enva_imagealt' => [
         'classname'     => 'theme_enva\external',
         'methodname'    => 'imagealt',
         'description'   => 'Image alt',
         'type'          => 'write',
         'loginrequired' => true,
         'ajax'          => true,
-    ),
-);
+    ],
+];

@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
  * A wrapper round Moodle's settings API.
  *
@@ -67,8 +66,8 @@ class enva_simple_theme_settings {
      *
      * @return string settingsname.
      */
-    private function name_for($setting, $suffix='') {
-        return $this->themename.'/'.$setting.$suffix;
+    private function name_for($setting, $suffix = '') {
+        return $this->themename . '/' . $setting . $suffix;
     }
 
     /**
@@ -91,7 +90,7 @@ class enva_simple_theme_settings {
      * @return string description string.
      */
     private function description_for($setting) {
-        return get_string($setting.'desc', $this->themename);
+        return get_string($setting . 'desc', $this->themename);
     }
 
     /**
@@ -103,7 +102,7 @@ class enva_simple_theme_settings {
      * @param mixed $unchecked
      *
      */
-    public function add_checkbox($setting, $default='0', $checked='1', $unchecked='0') {
+    public function add_checkbox($setting, $default = '0', $checked = '1', $unchecked = '0') {
         $checkbox = new admin_setting_configcheckbox(
             $this->name_for($setting),
             $this->title_for($setting),
@@ -125,7 +124,7 @@ class enva_simple_theme_settings {
      * @param mixed $checked
      * @param mixed $unchecked
      */
-    public function add_checkboxes($setting, $instance, $default='0', $checked='1', $unchecked='0') {
+    public function add_checkboxes($setting, $instance, $default = '0', $checked = '1', $unchecked = '0') {
         $checkbox = new admin_setting_configcheckbox(
             $this->name_for($setting . $instance),
             $this->title_for($setting, $instance),
@@ -144,7 +143,7 @@ class enva_simple_theme_settings {
      * @param mixed $setting
      * @param mixed $default
      */
-    public function add_text($setting, $default='') {
+    public function add_text($setting, $default = '') {
         $text = new admin_setting_configtext(
             $this->name_for($setting),
             $this->title_for($setting),
@@ -162,7 +161,7 @@ class enva_simple_theme_settings {
      * @param mixed $instance
      * @param mixed $default
      */
-    public function add_texts($setting, $instance, $default='') {
+    public function add_texts($setting, $instance, $default = '') {
         $text = new admin_setting_configtext(
             $this->name_for($setting . $instance),
             $this->title_for($setting, $instance),
@@ -245,7 +244,7 @@ class enva_simple_theme_settings {
      * @param mixed $setting
      * @param mixed $default
      */
-    public function add_textarea($setting, $default='') {
+    public function add_textarea($setting, $default = '') {
         $textarea = new admin_setting_configtextarea(
             $this->name_for($setting),
             $this->title_for($setting),
@@ -263,7 +262,7 @@ class enva_simple_theme_settings {
      * @param mixed $instance
      * @param mixed $default
      */
-    public function add_textareas($setting, $instance, $default='') {
+    public function add_textareas($setting, $instance, $default = '') {
         $textarea = new admin_setting_configtextarea(
             $this->name_for($setting . $instance),
             $this->title_for($setting, $instance),
@@ -280,7 +279,7 @@ class enva_simple_theme_settings {
      * @param mixed $setting
      * @param mixed $default
      */
-    public function add_htmleditor($setting, $default='') {
+    public function add_htmleditor($setting, $default = '') {
         $htmleditor = new admin_setting_confightmleditor(
             $this->name_for($setting),
             $this->title_for($setting),
@@ -297,7 +296,7 @@ class enva_simple_theme_settings {
      * @param mixed $setting
      * @param mixed $default
      */
-    public function add_colourpicker($setting, $default='#666') {
+    public function add_colourpicker($setting, $default = '#666') {
         $colorpicker = new admin_setting_configcolourpicker(
             $this->name_for($setting),
             $this->title_for($setting),
@@ -316,7 +315,7 @@ class enva_simple_theme_settings {
      * @param mixed $instance
      * @param mixed $default
      */
-    public function add_colourpickers($setting, $instance, $default='#666') {
+    public function add_colourpickers($setting, $instance, $default = '#666') {
         $colorpicker = new admin_setting_configcolourpicker(
             $this->name_for($setting . $instance),
             $this->title_for($setting, $instance),
@@ -351,7 +350,7 @@ class enva_simple_theme_settings {
      * @param mixed $count
      * @param mixed $default
      */
-    public function add_numbered_textareas($setting, $count, $default='') {
+    public function add_numbered_textareas($setting, $count, $default = '') {
         for ($i = 1; $i <= $count; $i++) {
             $textarea = new admin_setting_configtextarea(
                 $this->name_for($setting, $i),

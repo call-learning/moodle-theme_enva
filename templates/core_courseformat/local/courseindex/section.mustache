@@ -52,9 +52,11 @@
                 "visible": 0,
                 "isactive": 1
             }
-        ]
+        ],
+        "mustachelinter": true
     }
 }}
+{{#mustachelinter}}<div role="tree">{{/mustachelinter}}
 <div
     class="courseindex-section {{#current}}current{{/current}} {{#component}}delegated-section{{/component}}"
     id="course-index-section-{{id}}"
@@ -130,6 +132,7 @@
         </ul>
     </div>
 </div>
+{{#mustachelinter}}</div>{{/mustachelinter}}
 {{$ core_courseformat/local/courseindex/section-js}}
 {{#js}}
 require(['theme_enva/local/courseindex/section'], function(component) {

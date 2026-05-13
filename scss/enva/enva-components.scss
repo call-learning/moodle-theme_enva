@@ -3,7 +3,7 @@
     background-color: $gray-100;
     display: flex;
     color: $gray-600;
-    box-shadow: 0 -1px 0 rgba(0,0,0,.05) inset;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .05) inset;
     a {
         color: $gray-600;
         &:hover,
@@ -44,9 +44,8 @@
             }
         }
         input:-webkit-autofill {
-            background-color: white !important;
-            color: black !important;
-            /* Any other styles you want to apply */
+            background-color: white;
+            color: black;
         }
         .mform {
             margin-bottom: 0;
@@ -177,8 +176,8 @@
 }
 
 // The enva navbar containing the primary navigation.
-.enva-navbar-wrapper {
-    z-index: 1030 !important; // Make sure the navbar is above the block region
+.sticky-top.enva-navbar-wrapper {
+    z-index: 1030; // Make sure the navbar is above the block region
     background-color: $navbarbackground;
 }
 .enva-navbar {
@@ -195,7 +194,7 @@
             background-color: $envapurple;
         }
         .icon {
-            color: #FFF !important;
+            color: #fff !important; /* stylelint-disable-line declaration-no-important */
         }
     }
     .popover-region-toggle {
@@ -204,7 +203,7 @@
             background-color: $envapurple;
         }
         .icon {
-            color: #FFF !important;
+            color: #fff !important; /* stylelint-disable-line declaration-no-important */
         }
     }
     #usernavigation .dropdown-toggle {
@@ -220,7 +219,7 @@
         }
     }
     .editmode-switch-form label.text-primary {
-        color: #ffffff !important;
+        color: #fff !important; /* stylelint-disable-line declaration-no-important */
     }
     .custom-control-input:checked ~ .custom-control-label::before {
         background-color: #e3cdff;
@@ -239,6 +238,7 @@
     max-width: 100%;
     margin: 0 0.5rem;
 }
+
 @include media-breakpoint-up(md) {
     .enva-maxwidth {
         max-width: calc(90% - 30px);
@@ -276,6 +276,7 @@
         right: 0.25rem;
     }
 }
+
 @include media-breakpoint-up(md) {
     .courseheader-fromtheme {
         max-width: 300px;
@@ -288,7 +289,7 @@
         margin-bottom: 0;
     }
     .page-context-header {
-        margin-bottom: 0 !important;
+        margin-bottom: 0 !important; /* stylelint-disable-line declaration-no-important */
 
     }
     .course-summary {
@@ -300,74 +301,95 @@
 
 // To render the course banner. This code will be removed when the new course banner is implemented.
 .course-pano.wrapper {
-    position:relative;
     height: 175px;
     overflow: hidden;
     position: relative;
     background: #f4f4f4;
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
 }
 .course-pano.title {
     height: 135px;
     left: 0;
     padding: 20px;
     top: 0;
-	position: absolute;
+    position: absolute;
 }
 .course-pano.title h2 {
     margin-top: 10px;
     margin-bottom: 20px;
-    color: #fff !important;
+    color: #fff !important; /* stylelint-disable-line declaration-no-important */
     font-size: 24px;
     line-height: 28px;
     display: flex;
 }
 .course-pano.title h2 span {
-	background: $primary;
-	padding: 4px 8px 8px 8px;
+    background: $primary;
+    padding: 4px 8px 8px 8px;
 }
 .course-pano.title h4 {
-    color: #fff !important;
+    color: #fff !important; /* stylelint-disable-line declaration-no-important */
     margin-left: 15px;
     font-size: 16px;
     line-height: 22px;
 }
 .course-pano.title h4 span {
-	background:none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
-	border-left: 4px solid $primary;
-	padding: 8px;
-	display: inline-block;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    border-left: 4px solid $primary;
+    padding: 8px;
+    display: inline-block;
 }
-@media(max-width:979px){
-	.course-pano.title h2 {margin-bottom: 5px;margin-top: 10px;}
-	.course-pano.title h2 > span {font-size: .85em; line-height: 1.1em; padding-top: 6px;}
-	.course-pano.title h4 > span {font-size: .85em; line-height: 1.1em;}
+
+@media (max-width: 979px) {
+    .course-pano.title h2 {
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+    .course-pano.title h2 > span {
+        font-size: .85em;
+        line-height: 1.1em;
+        padding-top: 6px;
+    }
+    .course-pano.title h4 > span {
+        font-size: .85em;
+        line-height: 1.1em;
+    }
 }
-@media(max-width:767px){
-	.course-pano.title h2 {margin-top: 5px;}
-	.course-pano.title h2 > span {font-size: 0.75em; line-height: 1em;}
-	.course-pano.title h4 {margin-left:0;}
-	.course-pano.title h4 > span {font-size: 0.8em; line-height: 1em;}
+
+@media (max-width: 767px) {
+    .course-pano.title h2 {
+        margin-top: 5px;
+    }
+    .course-pano.title h2 > span {
+        font-size: 0.75em;
+        line-height: 1em;
+    }
+    .course-pano.title h4 {
+        margin-left: 0;
+    }
+    .course-pano.title h4 > span {
+        font-size: 0.8em;
+        line-height: 1em;
+    }
 }
 .course-pano > img {
     bottom: 0;
-	height: 100%;
-    margin: 0 !important;
+    height: 100%;
+    margin: 0 !important; /* stylelint-disable-line declaration-no-important */
     min-height: 175px;
     object-fit: cover;
     position: relative;
     width: 100%;
-	max-width: 100% !important;
+    max-width: 100% !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .line-clamp {
-    display: -webkit-box !important;            /* Creates a flexible box layout */
+    display: -webkit-box !important; /* stylelint-disable-line declaration-no-important */
     -webkit-box-orient: vertical;    /* Sets the box orientation to vertical */
     overflow: hidden;                /* Hides any content that overflows */
     text-overflow: ellipsis;         /* Adds the ellipsis (...) at the end */
     -webkit-line-clamp: 3;           /* Limits the block to 3 lines */
     line-clamp: 3;                   /* Limits the block to 3 lines */
-    padding: 0 !important;
+    padding: 0 !important; /* stylelint-disable-line declaration-no-important */
 }
 
 html[data-layout="maintenance"] {

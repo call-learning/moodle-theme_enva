@@ -17,8 +17,8 @@
 namespace theme_enva;
 
 use moodle_url;
-use \core\context as context;
-use \core\context_course as context_course;
+use core\context;
+use core\context_course;
 
 /**
  * Class mod_teachingtools/imagehandler for the image_editable output component.
@@ -28,7 +28,6 @@ use \core\context_course as context_course;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class imagehandler {
-
     /**
      * Check permissions for storing the image.
      *
@@ -61,21 +60,31 @@ class imagehandler {
             'filearea' => $filearea,
             'itemid' => 0,
             'filepath' => '/',
-            'filename' => $filename
+            'filename' => $filename,
         ];
         $fs->create_file_from_string($newimage, $binary);
     }
 
     /**
      * Get the image URL.
+     * This gets the image URL for the image stored in the given filearea.
+     * @param int $contextid The course context id.
+     * @param string $filearea The filearea where this image is stored.
+     * @return string The image URL.
      */
     public static function get_image_url(int $contextid, string $filearea): string {
         $fs = get_file_storage();
         $files = $fs->get_area_files($contextid, 'course', $filearea);
         foreach ($files as $file) {
             if ($file->is_valid_image()) {
-                return moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(),
-                    $file->get_filearea(), null, $file->get_filepath(), $file->get_filename());
+                return moodle_url::make_pluginfile_url(
+                    $file->get_contextid(),
+                    $file->get_component(),
+                    $file->get_filearea(),
+                    null,
+                    $file->get_filepath(),
+                    $file->get_filename()
+                );
             }
         }
         return '';

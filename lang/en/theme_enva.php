@@ -25,38 +25,32 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Enva';
-$string['privacy:metadata'] = 'The Enva theme does not store any data.';
-$string['choosereadme'] = 'Enva theme';
 
-// Settings
-$string['loginbackground'] = 'Login background image';
-$string['loginbackgrounddesc'] = 'Login background image to show on login background';
-$string['scss'] = 'Extra scss';
-$string['scssdesc'] = 'Extra scss compiled into the theme';
-
-// Frontpage
 $string['bookmark'] = 'https://www.vet-alfort.fr';
-$string['email']  = 'webmaster@vet-alfort.fr';
-$string['editcarousel'] = 'Edit carousel';
 $string['carouselconfig'] = 'Carousel configuration';
-$string['enva:editcarousel'] = 'Edit the carousel';
 $string['carouselenabled'] = 'Carousel enabled';
-$string['carouseltitle'] = 'Carousel title {$a}';
 $string['carouselimage'] = 'Carousel image {$a}';
-$string['carouseltext'] = 'Carousel text {$a}';
 $string['carousellink'] = 'Carousel link {$a}';
 $string['carouselslide'] = 'Carousel slide {$a}';
 $string['carouselslideactive'] = 'Enabled';
 $string['carouselslideactivedesc'] = 'Enable this slide';
-$string['remove'] = 'Remove';
-$string['numberofslides'] = 'Number of slides';
+$string['carouseltext'] = 'Carousel text {$a}';
+$string['carouseltitle'] = 'Carousel title {$a}';
+$string['choosereadme'] = 'Enva theme';
+$string['editcarousel'] = 'Edit carousel';
+$string['email']  = 'webmaster@vet-alfort.fr';
+$string['enva:editcarousel'] = 'Edit the carousel';
 $string['footertext'] = 'L\'EnvA est un établissement d\'enseignement supérieur et de recherche sous tutelle du Ministère chargé' .
 ' de l\'Agriculture, et membre de la Communauté d\'Universités et d\'Etablissements "Université Paris-Est".<br><br>' .
 ' 7 avenue du Général de Gaulle, 94700 Maisons Alfort';
-
-// Course Image
-$string['uploadimage'] = 'Upload image';
-
+$string['loginbackground'] = 'Login background image';
+$string['loginbackgrounddesc'] = 'Login background image to show on login background';
+$string['numberofslides'] = 'Number of slides';
+$string['pluginname'] = 'Enva';
+$string['privacy:metadata'] = 'The Enva theme does not store any data.';
+$string['remove'] = 'Remove';
 $string['responsibleforcourse'] = 'Responsible role for course';
 $string['responsibleforcoursedesc'] = 'Responsible role name for course, to be shown on course page';
+$string['scss'] = 'Extra scss';
+$string['scssdesc'] = 'Extra scss compiled into the theme';
+$string['uploadimage'] = 'Upload image';

@@ -40,9 +40,6 @@ function theme_enva_page_init(moodle_page $page) {
  */
 function theme_enva_get_main_scss_content($theme) {
     global $CFG;
-    // if (isset($CFG->debugdeveloper)) {
-    //     return '';
-    // }
     $scss = '';
      // Sets the login background image.
     $loginbackgroundurl = $theme->setting_file_url('loginbackground', 'loginbackground');
@@ -110,4 +107,3 @@ function theme_enva_get_precompiled_css() {
     global $CFG;
     return file_get_contents($CFG->dirroot . '/theme/enva/style/moodle.css');
 }
-

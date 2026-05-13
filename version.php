@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_enva';
 $plugin->release = '1.0.0';
-$plugin->version = 2023080102;
+$plugin->version = 2025051300;
 $plugin->requires = 2022041900;
 $plugin->maturity = MATURITY_STABLE;
 $plugin->dependencies = [

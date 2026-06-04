@@ -95,7 +95,7 @@ final class setup_utils_test extends advanced_testcase {
             false,
             'standard',
             'general',
-            'content',
+            'side-pre',
             null,
             3
         );
@@ -105,7 +105,7 @@ final class setup_utils_test extends advanced_testcase {
                 [
                     'blockname' => 'html',
                     'showinsubcontexts' => '0',
-                    'defaultregion' => 'content',
+                    'defaultregion' => 'side-pre',
                     'defaultweight' => '4',
                     'files' => [
                         'sample.jpg' => [
@@ -125,12 +125,12 @@ final class setup_utils_test extends advanced_testcase {
             false,
             'standard',
             'general',
-            'content',
+            'side-pre',
             null,
             3
         );
         $otherpage->blocks->load_blocks();
-        $blocks = $otherpage->blocks->get_content_for_region('content', $OUTPUT);
+        $blocks = $otherpage->blocks->get_blocks_for_region('side-pre', $OUTPUT);
         $this->assertCount(1, $blocks);
     }
 }

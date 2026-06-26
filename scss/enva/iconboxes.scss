@@ -1,0 +1,73 @@
+// The iconboxes widget
+.iconboxes {
+    & > .iconbox {
+        padding: 0.5rem;
+        color: #fff;
+        display: flex;
+        .inner {
+            padding: 1rem;
+            flex: 1 0;
+            &:hover {
+                background-color: #4a4a4a !important; /* stylelint-disable-line declaration-no-important */
+            }
+        }
+    }
+    & > .iconbox:nth-child(8n+1) .inner {
+        background-color: #41225f;
+    }
+    & > .iconbox:nth-child(8n+2) .inner {
+        background-color: #785991;
+    }
+    & > .iconbox:nth-child(8n+3) .inner {
+        background-color: #e08cb2;
+    }
+    & > .iconbox:nth-child(8n+4) .inner {
+        background-color: #bc3d7d;
+    }
+    // Repeat the pattern in reverse.
+    & > .iconbox:nth-child(8n+5) .inner {
+        background-color: #bc3d7d;
+    }
+    & > .iconbox:nth-child(8n+6) .inner {
+        background-color: #e08cb2;
+    }
+    & > .iconbox:nth-child(8n+7) .inner {
+        background-color: #785991;
+    }
+    & > .iconbox:nth-child(8n+8) .inner {
+        background-color: #41225f;
+    }
+    .iconbox {
+        position: relative;
+        .iconbox-content {
+            text-align: center;
+            word-wrap: break-word;
+            margin-top: 1rem;
+            .btn-primary {
+                display: none;
+            }
+            a::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                pointer-events: auto;
+                content: "";
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+        .iconcircle {
+            text-align: center;
+            .fa,
+            .far,
+            .fas {
+                color: #fff;
+                font-size: 42px;
+                transition: all 0.7s;
+                display: contents;
+            }
+        }
+    }
+}

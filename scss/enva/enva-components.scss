@@ -23,6 +23,9 @@
 
     img.envalogo {
         width: 150px;
+        @include media-breakpoint-down(sm) {
+            width: 75px;
+        }
     }
     img.francelogo {
         width: 100px;

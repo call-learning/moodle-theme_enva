@@ -40,6 +40,7 @@ const Selectors = {
     },
     attributes: {
         menu: '[role="menu"]',
+        menuitem: '[role="menuitem"]',
         dropdowntoggle: '[data-bs-toggle="dropdown"]'
     }
 };
@@ -185,6 +186,50 @@ const moveOutOfMoreDropdown = (menu, navNode) => {
 };
 
 /**
+ * Determine whether a menu item is a submenu toggle rendered inside a dropdown menu.
+ *
+ * @param {HTMLElement} item The menu item anchor.
+ * @return {boolean} True if the item opens a nested submenu.
+ */
+const isNestedSubmenuToggle = item => {
+    return item.classList.contains(Selectors.classes.dropdownitem) &&
+        item.matches(Selectors.attributes.dropdowntoggle);
+};
+
+/**
+ * Get the submenu (dropdown menu) controlled by a given submenu toggle.
+ *
+ * @param {HTMLElement} toggle The submenu toggle anchor.
+ * @return {HTMLElement|null} The submenu element, or null if there isn't one.
+ */
+const getChildSubmenu = toggle => {
+    return toggle.parentElement ? toggle.parentElement.querySelector(':scope > ' + Selectors.attributes.menu) : null;
+};
+
+/**
+ * Move focus to the next or previous menu item at the same submenu level.
+ *
+ * Only visible items that live directly within the same list are considered, so focus never
+ * jumps into a (possibly open) nested submenu. Navigation wraps around at both ends.
+ *
+ * @param {HTMLElement} currentItem The currently focused menu item anchor.
+ * @param {number} direction 1 to move to the next item, -1 to move to the previous item.
+ */
+const focusLevelSibling = (currentItem, direction) => {
+    // The <ul> that holds the sibling <li> items (anchor -> li -> ul).
+    const list = currentItem.parentElement.parentElement;
+    const items = Array.from(list.children)
+        .map(child => child.querySelector(':scope > ' + Selectors.attributes.menuitem))
+        .filter(item => item !== null && item.offsetParent !== null);
+    const currentIndex = items.indexOf(currentItem);
+    if (currentIndex === -1 || items.length === 0) {
+        return;
+    }
+    const nextIndex = (currentIndex + direction + items.length) % items.length;
+    items[nextIndex].focus();
+};
+
+/**
  * Initialise the more menus.
  *
  * @param {HTMLElement} menu The navbar moremenu.
@@ -270,4 +315,51 @@ export default menu => {
             }
         }
     });
+
+    // Fix keyboard navigation within nested submenus.
+    //
+    // Moodle attaches Bootstrap's dropdown keyboard handler on the document during the *capture* phase
+    // (see theme_boost/loader::realocateBootstrapEvents). For ArrowUp/ArrowDown that handler opens the
+    // (sub)menu and calls event.stopPropagation(), so the event is consumed before it can reach a
+    // bubble-phase listener on this menu. That is why arrow up/down never reaches a listener here, while
+    // left/right (which Bootstrap ignores) does.
+    //
+    // To take over arrow navigation we therefore listen on `window` in the capture phase, which runs
+    // *before* the document-level Bootstrap handler, and stop the event there. Inside a dropdown menu the
+    // arrow keys should move between items at the same level; a submenu should only open on Enter/Space,
+    // which then moves focus into it.
+    const view = menu.ownerDocument.defaultView || window;
+    view.addEventListener('keydown', (e) => {
+        const src = e.target;
+
+        // Only handle items that live inside this menu's dropdowns.
+        if (!(src instanceof HTMLElement) || !menu.contains(src) ||
+                !src.classList.contains(Selectors.classes.dropdownitem)) {
+            return;
+        }
+
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            // Run before (and instead of) Bootstrap: navigate the current level, don't open a submenu.
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            focusLevelSibling(src, e.key === 'ArrowDown' ? 1 : -1);
+            return;
+        }
+
+        if ((e.key === 'Enter' || e.key === ' ') && isNestedSubmenuToggle(src)) {
+            // Open the submenu (if it isn't already) and move focus to its first item.
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const submenu = getChildSubmenu(src);
+            if (submenu && !submenu.classList.contains('show')) {
+                src.click();
+            }
+            view.requestAnimationFrame(() => {
+                const firstItem = submenu ? submenu.querySelector(Selectors.attributes.menuitem) : null;
+                if (firstItem) {
+                    firstItem.focus();
+                }
+            });
+        }
+    }, true);
 };

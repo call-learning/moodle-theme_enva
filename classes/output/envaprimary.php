@@ -93,6 +93,7 @@ class envaprimary {
                 'icon' => $node->icon,
                 'isactive' => $node->isactive || !empty($activechildren),
                 'key' => $node->key,
+                'sort' => $node->key,
                 'children' => $children,
                 'haschildren' => !empty($children) ? 1 : 0,
             ];
@@ -117,6 +118,14 @@ class envaprimary {
         }
 
         $custommenuitems = $CFG->custommenuitems;
+
+        // If filtering of the primary custom menu is enabled, apply only the string filters.
+        if (!empty($CFG->navfilter && !empty($CFG->stringfilters))) {
+            // Apply filters that are enabled for Content and Headings.
+            $filtermanager = \filter_manager::instance();
+            $custommenuitems = $filtermanager->filter_string($custommenuitems, \context_system::instance());
+        }
+
         $currentlang = current_language();
         $custommenunodes = custom_menu::convert_text_to_menu_nodes($custommenuitems, $currentlang);
         $nodes = [];
@@ -206,6 +215,12 @@ class envaprimary {
 
         $pathmatches = false;
 
+        // Check for same host names before comparing the path.
+        $currenthost = array_key_exists('host', $current) ? strtolower($current['host']) : '';
+        $nodehost = array_key_exists('host', $nodeurl) ? strtolower($nodeurl['host']) : '';
+        if ($currenthost !== $nodehost) {
+            return false;
+        }
         // Exact match of the path of node and current url.
         $nodepath = $nodeurl['path'] ?? '/';
         $currentpath = $current['path'] ?? '/';
